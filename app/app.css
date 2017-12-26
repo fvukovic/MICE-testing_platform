@@ -1,5 +1,7 @@
 /* app css stylesheet */
-
+body {
+  font-family: 'Open Sans', sans-serif !important;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -22,4 +24,29 @@
 .menu > li + li:before {
   content: "|";
   padding-right: 0.3em;
+}
+#header .header-body {
+  border: 0 !important;
+  padding: 0 !important;
+}
+.header-container {
+  background: #2f71aa;
+}
+#header .header-nav {
+  background: #e6e6e6 !important;
+}
+#header .header-logo {
+  float: right !important;
+}
+#footer {
+  margin-top: 0 !important;
+}
+
+
+@media (min-width: 992px) {
+#header .header-nav-main nav > ul > li > a {
+    border-radius: 0;
+    padding: 13px 13px;
+    height: 45px;
+}
 }
