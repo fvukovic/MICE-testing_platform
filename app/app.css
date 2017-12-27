@@ -2,6 +2,8 @@
 body {
   font-family: 'Open Sans', sans-serif !important;
 }
+
+/* HEADER AND MENU */
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -26,27 +28,109 @@ body {
   padding-right: 0.3em;
 }
 #header .header-body {
-  border: 0 !important;
-  padding: 0 !important;
-}
-.header-container {
-  background: #2f71aa;
-}
-#header .header-nav {
-  background: #e6e6e6 !important;
+  background: #2f71aa !important;
 }
 #header .header-logo {
   float: right !important;
 }
-#footer {
-  margin-top: 0 !important;
+.header-nav-top {
+  float: right !important;
 }
-
-
-@media (min-width: 992px) {
 #header .header-nav-main nav > ul > li > a {
-    border-radius: 0;
-    padding: 13px 13px;
-    height: 45px;
+  color: #fff !important;
 }
+#header .header-top .header-nav-top {
+  margin-top: 0 !important;
+  float: none !important;
+}
+.pull-right {
+  float: right;
+}
+h1.page-title {
+  color: #fff;
+}
+#login-dp{
+  min-width: 250px;
+  padding: 14px 14px 0 !important;
+  overflow:hidden;
+}
+#login-dp .help-block{
+  font-size:12px    
+}
+#login-dp .bottom{
+  background-color:rgba(255,255,255,.8);
+  border-top:1px solid #ddd;
+  clear:both;
+  padding:14px;
+}
+#login-dp .form-group {
+  margin-bottom: 10px;
+}
+.navbar-text {
+  margin-right: 5px !important;
+}
+.login-btn {
+  padding: 8px 10px !important;
+}
+.clear40 {
+  height: 40px;
+  width: 100%;
+}
+
+/* PAGE STRUCTURE */
+.entry {
+  margin-top: 40px;
+}
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
+.image-preview-input {
+  position: relative;
+overflow: hidden;
+margin: 0px;    
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+position: absolute;
+top: 0;
+right: 0;
+margin: 0;
+padding: 0;
+font-size: 20px;
+cursor: pointer;
+opacity: 0;
+filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+  margin-left:2px;
 }

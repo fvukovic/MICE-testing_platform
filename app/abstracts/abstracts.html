@@ -1,0 +1,236 @@
+<div class="entry">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="sazeci_slanje.php" method="post" name="forma" id="forma" onsubmit="return provjera_Abstract_forme()">
+                    <div class="alert alert-danger text-smaller2">
+                        <button class="close" type="button" data-dismiss="alert">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <p>
+                            <strong>VAŽNO</strong> Molimo koristite latinična slova. Ukoliko niste, upute za prijavu sažetaka pogledajte
+                            ovdje:
+                            <a href="">upute za slanje sažetaka</a>. Sažeci zaprimljeni izvan navedenih uputa neće se smatrati valjanim.
+                        </p>
+                    </div>
+                    <div class="alert alert-warning text-smaller2">
+                        <button class="close" type="button" data-dismiss="alert">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <p>U slučaju bilo kakvih poteškoća i nemogućnosti online prijave sažetaka, kontaktirajte nas na Email:
+                            <a href="mailto:mail@mail.com">mail@mail.com</a>
+                        </p>
+                    </div>
+                    <div class="clear40"></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-chevron-circle-right"></i> VRSTA PREZENTACIJE</h4>
+                            <p>
+                                <input name="type" type="radio" id="vrsta1" value="Oral" checked="checked"> Oralna prezentacija
+
+                                <input name="type" type="radio" id="vrsta2" value="Poster"> Poster prezentacija
+                            </p>
+                            <div class="clear40-small2"></div>
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-chevron-circle-right"></i> TEMA PREZENTACIJE</h4>
+                            <div class="form-group">
+                                <select class="form-control" name="tema" id="tema">
+                                    <option value="no" selected="selected"> - - ODABERITE TEMU PREZENTACIJE - -</option>
+                                    <option value="Alergijski rinitis">Alergijski rinitis</option>
+                                    <option value="Rinosinuitis">Rinosinuitis</option>
+                                    <option value="Sinonazalna polipoza">Sinonazalna polipoza</option>
+                                    <option value="Poremećaj njuha">Poremećaj njuha</option>
+                                    <option value="Konzervativna terapija u rinologiji">Konzervativna terapija u rinologiji</option>
+                                    <option value="Dječje rinološke bolesti">Dječje rinološke bolesti</option>
+                                    <option value="OSA">OSA</option>
+                                    <option value="Endoskopska sinusna kirurgija">Endoskopska sinusna kirurgija</option>
+                                    <option value="Navigacijska endoskopska sinusna kirurgija (NESS)">Navigacijska endoskopska sinusna kirurgija (NESS)</option>
+                                    <option value="Plastično-rekonstruktivna kirurgija nosa">Plastično-rekonstruktivna kirurgija nosa</option>
+                                    <option value="Tumori nosa i paranazalnih šupljina">Tumori nosa i paranazalnih šupljina</option>
+                                    <option value="Kompjuterski asistirana kirurgija sinusa">Kompjuterski asistirana kirurgija sinusa</option>
+                                    <option value="Kirurgija lubanjske osnovice">Kirurgija lubanjske osnovice</option>
+                                    <option value="Radiološke tehnike u rinologiji">Radiološke tehnike u rinologiji</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-user"></i> KONTAKT AUTOR</h4>
+                            <p>Upišite autora za kontakt i korespondenciju. Imajte na umu da treba biti dodan na listu autora
+                                sažetaka u nastavku prijave.</p>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-icon-left">
+                                    <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
+                                    <label>
+                                        <strong>Ime i prezime kontakt autora</strong> (npr. Ivan Horvat)</label>
+                                    <input name="autorime" id="autorime" class="form-control" type="text" required="" placeholder="Obavezno!">
+                                </div>
+                                <div class="form-group form-group-icon-left">
+                                    <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
+                                    <label>
+                                        <strong>Email kontakt autora</strong>
+                                    </label>
+                                    <input name="autoremail" id="autoremail" class="form-control" type="email" required="" placeholder="Obavezno!">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-icon-left">
+                                    <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
+                                    <label>
+                                        <strong>Telefon kontakt autora</strong>
+                                    </label>
+                                    <input name="autortelefon" id="autortelefon" class="form-control" type="text" required="" placeholder="Obavezno!">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear40"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-university"></i> LISTA INSTITUCIJA</h4>
+                            <p>Upišite institucije autora prema sljedećem primjeru: Naziv institucije, Adresa, Poštanski broj
+                                Grad, Država (
+                                <strong>npr.</strong> KBC Zagreb, Kišpatićeva 12, 10000 Zagreb, Hrvatska)</p>
+                        </div>
+                        <div class="col-md-9">
+                            <input name="institucijaIme" id="institucijaIme" class="form-control form-control2 inputMy" type="text" placeholder="Upišite naziv institucije po gornjem primjeru te je dodajte na listu. Maksimalno 20 institucija.">
+                        </div>
+                        <div class="col-md-3" style="text-align:left;">
+                            <input type="button" value="DODAJ INSTITUCIJU NA LISTU" onclick="dodajInstitucije();" class="btn btn-default btnMy">
+                        </div>
+
+                    </div>
+                    <div class="col-md-12" id="institucijeIzlist" style="line-height:30px;"></div>
+
+                    <div class="clear40"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-users"></i> AUTORI SAŽETAKA</h4>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="labelMy2">Odredite broj autora</label>
+                                        <select name="brojautora" id="brojautora" onchange="broj(this);" class="form-control" style="max-width:65px;">
+                                            <option value="1" selected="selected">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 containerAutor1" id="autor1" style="background-color:#f5f5f5;">
+                                <h5 style="border-bottom:1px solid #d4d4d4;">
+                                    <i class="fa fa-user-plus"></i> AUTOR 1</h5>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <br>
+                                        <div class="form-group form-group-icon-left">
+                                            <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
+                                            <label>
+                                                <strong>Ime i prezime</strong> (npr. Ivan Horvat)</label>
+                                            <input name="autorime1" id="autorime1" class="form-control inputMy" type="text" required="" placeholder="npr. Ivan Horvat">
+                                            <div class="text-smaller" style="padding:3px;">
+                                                <strong>Odabrane institucije:</strong>
+                                            </div>
+                                            <div id="authorInstitutionList1" class="text-smaller" style="padding:3px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>
+                                                <strong>Dodijelite autoru instituciju.</strong>
+                                                <br>Možete dodijeliti i više njih (kliknite prvu instituciju te CTRL + klik mišem
+                                                na ostale).</label>
+                                            <select multiple="" class="form-control inputMy" name="autorInstitucija1" id="autorInstitucija1" onchange="autorInstitucijaFunction1(this);"
+                                                style="font-size:13px;">
+                                                <option value="no" hidden="">- - - ODABERITE INSTITUCIJU - - -</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p>&nbsp;</p>
+                                        <input type="radio" name="autorpresenting" id="autorpresenting1" value="yes1"> Ovo je autor izlagač </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear40"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-file-text"></i> SAŽETAK</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>
+                                    <strong>Naslov sažetka</strong>
+                                </label>
+                                <input name="abstract_title" id="abstract_title" class="form-control" type="text" required="" placeholder="Obavezno!">
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="display:BLOCK;">
+                            <div class="form-group">
+                                <label>
+                                    <strong>Ključne riječi</strong> (3-5 ključnih riječi odvojenih zarezom)</label>
+                                <input name="abstract_key" id="abstract_key" class="form-control" type="text" placeholder="Obavezno!" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label>
+                                <strong>Tekst sažetka</strong>
+                                <span class="text-smaller" style="float:right; color:red;">Broj znakova:
+                                    <span id="ukupno_znakova">0</span> / 2000</span>
+                            </label>
+                            <textarea name="abstract_text" id="abstract_text" class="form-control" rows="13" required="" onkeydown="DescriptionCharCount();"
+                                onkeyup="DescriptionCharCount();" placeholder="Obavezno!"></textarea>
+                        </div>
+                    </div>
+                    <div class="clear40"></div>
+
+
+                    <div class="row">
+                        <div class="col-md-12" style="border:dashed 1px #CCC;">
+                            <p>Ukoliko sažetak sadrži neke specijalne znakove, oni možda neće biti prikazani pravilno. Molimo
+                                Vas, pregledajte sažetak u obliku koji se zaprima (Word dokument) te ako je potrebno zamijenite
+                                krivo prikazane znakove drugim, istoznačnim. Ako se greška nastavlja, kontaktirajte nas na
+                                sljedeću email adresu:
+                                <a href="mailto:mail@mail.com">mail@mail.com</a>
+                            </p>
+                            <p style="margin-top:20px; text-align:center">
+                                <input type="submit" name="gumb1" id="pregled" value="PREGLED SAŽETKA U OBLIKU KOJI SE ZAPRIMA (WORD DOKUMENT)" class="btn btn-default"
+                                    onclick="submitAction=this.id;">
+                            </p>
+
+                            <p align="center">
+                                <input type="submit" name="gumb" id="slanje" value="PREGLEDAO SAM UPISANE PODATKE I ŽELIM PRIJAVITI SAŽETAK" class="btn btn-primary btn-lg"
+                                    onclick="submitAction=this.id;">
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

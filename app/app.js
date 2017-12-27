@@ -4,6 +4,11 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.home',
+  'myApp.register',
+  'myApp.registration',
+  'myApp.my-profile',
+  'myApp.events',
+  'myApp.abstracts',
   'myApp.view1',
   'myApp.view2',
   'myApp.version'
@@ -13,3 +18,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
   $routeProvider.otherwise({redirectTo: '/home'});
 }]);
+
+  $("#input-id").fileinput();
+

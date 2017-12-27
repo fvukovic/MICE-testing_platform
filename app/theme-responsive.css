@@ -1,0 +1,21 @@
+@media (min-width: 992px) {
+    #header .header-nav-main nav > ul > li > a {
+        border-radius: 0;
+        padding: 13px 13px;
+        height: 45px;
+    }
+    }
+
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+  }
+  
+  
+  
