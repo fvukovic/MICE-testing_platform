@@ -2,13 +2,14 @@
 
 angular.module('myApp.home', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', function($routeProvider,$scope) {
   $routeProvider.when('/home', {
     templateUrl: 'home/home.html',
     controller: 'HomeCtrl'
   });
 }])
 
-.controller('HomeCtrl', [function() {
-
-}]);
+.controller('HomeCtrl', function($scope) { 
+  $scope.change = function(language){ 
+}
+});
