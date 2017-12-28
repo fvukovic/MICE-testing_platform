@@ -2,7 +2,10 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js">
+<!--<![endif]-->
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,14 +18,16 @@
   <link rel="stylesheet" href="../bower_components\bootstrap\dist\css\bootstrap-theme.min.css">
   <link rel="stylesheet" href="../bower_components\font-awesome-4.7.0\css\font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet"
+    type="text/css" />
+
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="theme-elements.css">
   <link rel="stylesheet" href="theme-shop.css">
   <link rel="stylesheet" href="default.css">
   <link rel="stylesheet" href="app.css">
 </head>
+
 <body>
   <div ng-include="'menu/menu.html'"></div>
 
@@ -33,14 +38,18 @@
   <div ng-view></div>
   <div ng-include="'footer/footer.html'"></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <div>Angular seed app: v
+    <span app-version></span>
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+
   <script src="../bower_components\jquery\dist\jquery.min.js"></script>
   <script src="../bower_components\bootstrap\dist\js\bootstrap.min.js"></script>
   <script src="../bower_components/angular/angular.js"></script>
+
   <script src="../bower_components/angular-translate/angular-translate.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
@@ -49,6 +58,7 @@
   <script src="registration/registration.js"></script>
   <script src="events/events.js"></script>
   <script src="abstracts/abstracts.js"></script>
+  <script src="conference-info/conference_info.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
   <script src="my-profile/my_profile.js"></script>
@@ -56,4 +66,5 @@
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
 </body>
+
 </html>

@@ -29,6 +29,7 @@ body {
 }
 #header .header-body {
   background: #2f71aa !important;
+  padding: 8px 0 0 0 !important;
 }
 #header .header-logo {
   float: right !important;
@@ -142,4 +143,10 @@ filter: alpha(opacity=0);
 }
 input[type=checkbox], input[type=radio] {
   box-shadow: none !important;
+}
+.entry-img {
+  width: 50%;
+  height: auto;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
