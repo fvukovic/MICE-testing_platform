@@ -80,7 +80,70 @@ app.config(['$translateProvider', function ($translateProvider) {
       "ACCO":"Prijedlog",
       "HOW":"Kako doći do tamo",
       "SHOPPING":"Šoping",
-      "DINNING":"Fina jela"
+      "DINNING":"Fina jela",
+
+      //ABSTRACT
+
+      'WORD' :  "Vas, pregledajte sažetak u obliku koji se zaprima (Word dokument) te ako je potrebno zamijenite krivo prikazane znakove drugim, istoznačnim. Ako se greška nastavlja, kontaktirajte nas na sljedeću email adresu:",
+"TEXT":"Tekst sažetka",
+"NUMBER" :"Broj znakova:",
+"KEY": "Ključne riječi",
+"35KEY" :"(3-5 ključnih riječi odvojenih zarezom)",
+
+"TITLESA": "Naslov sažetka" ,
+
+"SAZETAK": "SAŽETAK”",
+"AUTHORI":  "Ovo je autor izlagač",
+
+"CHOOSEIN" :  "- - - ODABERITE INSTITUCIJU - - -",
+
+"UCANCHOOSE":" Možete dodijeliti i više njih (kliknite prvu instituciju te CTRL + klik mišem na ostale",
+"SET":" Dodijelite autoru instituciju",
+
+ "CHOOSEDI":" Odabrane institucije",
+"NAMESURNAME":"Ime i prezime",
+"AUTHOR":"AUTOR",
+
+"CHOOSEA":"Odredite broj autora",
+"AUTORSA" :"AUTORI SAŽETAKA",	
+"WRITEIN":"Upišite institucije autora prema sljedećem primjeru: Naziv institucije, Adresa, Poštanski broj Grad, Država",
+"NPR":" npr.",
+
+"LISTIN":" LISTA INSTITUCIJA",
+"PHONEAU":" Telefon kontakt autor",
+"EMAILAU":" Email kontakt autora",
+"NAMEAUTO":" Ime i prezime kontakt autor",
+
+"THEME":"TEMA PREZENTACIJE",
+
+"POSTER":"Poster prezentacija",
+"ORAL":" Oralna prezentacija",
+"TYPE":"VRSTA PREZENTACIJA",
+"ONLINE":"U slučaju bilo kakvih poteškoća i nemogućnosti online prijave sažetaka, kontaktirajte nas na Email",
+"SAZIZVAN":" Sažeci zaprimljeni izvan navedenih uputa neće se smatrati valjanim",
+"DIRECTIONS":" upute za slanje sažetaka",
+
+
+"PLSLAT":" Molimo koristite latinična slova. Ukoliko niste, upute za prijavu sažetaka pogledajte ovdje:",
+
+
+"IMPORTANT":" VAŽNO"
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
   });
   if(window.localStorage.getItem("language")==null){
     window.localStorage.setItem("language","en")
