@@ -87,5 +87,3 @@ app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.preferredLanguage(window.localStorage.getItem("language"));
 }]);
 
-  $("#input-id").fileinput();
-

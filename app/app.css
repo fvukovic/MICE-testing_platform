@@ -134,3 +134,12 @@ filter: alpha(opacity=0);
 .image-preview-input-title {
   margin-left:2px;
 }
+.toggle-details {
+  display:none;
+}
+.table-border-none>thead>tr>th, .table-border-none>tbody>tr>td {
+  border: 0 !important;
+}
+input[type=checkbox], input[type=radio] {
+  box-shadow: none !important;
+}
