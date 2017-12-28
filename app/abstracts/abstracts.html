@@ -34,7 +34,7 @@
                                 <i class="fa fa-chevron-circle-right"></i>        {{'THEME' | translate }} </h4>
                             <div class="form-group">
                                 <select class="form-control" name="tema" id="tema">
-                                    <option value="no" selected="selected">          - - ODABERITE TEMU PREZENTACIJE - -</option>
+                                    <option value="no" selected="selected" >   {{'CHOSEPRE' | translate }}      </option>
                                     <option value="Alergijski rinitis">         Alergijski rinitis</option>
                                     <option value="Rinosinuitis">        Rinosinuitis</option>
                                     <option value="Sinonazalna polipoza">      Sinonazalna polipoza</option>
@@ -61,14 +61,14 @@
                                     <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
                                     <label>
                                         <strong>        {{'NAMEAUTO' | translate }}  </strong> (npr. Ivan Horvat)</label>
-                                    <input name="autorime" id="autorime" class="form-control" type="text" required="" placeholder="Obavezno!">
+                                    <input name="autorime" id="autorime" class="form-control" type="text" required="" placeholder="{{ 'REQUIRED' | translate }}">
                                 </div>
                                 <div class="form-group form-group-icon-left">
                                     <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
                                     <label>
                                         <strong>         {{'EMAILAU' | translate }}  </strong>
                                     </label>
-                                    <input name="autoremail" id="autoremail" class="form-control" type="email" required="" placeholder="Obavezno!">
+                                    <input name="autoremail" id="autoremail" class="form-control" type="email" required=""  placeholder="{{ 'REQUIRED' | translate }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -77,7 +77,7 @@
                                     <label>
                                         <strong>        {{'PHONEAU' | translate }}  </strong>
                                     </label>
-                                    <input name="autortelefon" id="autortelefon" class="form-control" type="text" required="" placeholder="Obavezno!">
+                                    <input name="autortelefon" id="autortelefon" class="form-control" type="text" required=""  placeholder="{{ 'REQUIRED' | translate }}">
                                 </div>
                             </div>
                         </div>
@@ -91,10 +91,10 @@
                                 <strong>        {{'NPR' | translate }}  .</strong> KBC Zagreb, Kišpatićeva 12, 10000 Zagreb, Hrvatska)</p>
                         </div>
                         <div class="col-md-9">
-                            <input name="institucijaIme" id="institucijaIme" class="form-control form-control2 inputMy" type="text" placeholder="Upišite naziv institucije po gornjem primjeru te je dodajte na listu. Maksimalno 20 institucija.">
+                            <input name="institucijaIme" id="institucijaIme" class="form-control form-control2 inputMy" type="text" placeholder="{{ 'NAMEINST' | translate }}"  >
                         </div>
                         <div class="col-md-3" style="text-align:left;">
-                            <input type="button" value="DODAJ INSTITUCIJU NA LISTU" onclick="dodajInstitucije();" class="btn btn-default btnMy">
+                            <input type="button" value=" {{'ADD' | translate }}" onclick="dodajInstitucije();" class="btn btn-default btnMy">
                         </div>
 
                     </div>
@@ -182,14 +182,14 @@
                                 <label>
                                     <strong>        {{'TITLESA' | translate }}  </strong>
                                 </label>
-                                <input name="abstract_title" id="abstract_title" class="form-control" type="text" required="" placeholder="Obavezno!">
+                                <input name="abstract_title" id="abstract_title" class="form-control" type="text" required="" placeholder="{{ 'REQUIRED' | translate }}">
                             </div>
                         </div>
                         <div class="col-md-6" style="display:BLOCK;">
                             <div class="form-group">
                                 <label>
                                     <strong>        {{'KEY' | translate }} </strong>        {{'35KEY' | translate }}  </label>
-                                <input name="abstract_key" id="abstract_key" class="form-control" type="text" placeholder="Obavezno!" required="">
+                                <input name="abstract_key" id="abstract_key" class="form-control" type="text" placeholder="{{ 'REQUIRED' | translate }}" required="">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -199,7 +199,7 @@
                                     <span id="ukupno_znakova">0</span> / 2000</span>
                             </label>
                             <textarea name="abstract_text" id="abstract_text" class="form-control" rows="13" required="" onkeydown="DescriptionCharCount();"
-                                onkeyup="DescriptionCharCount();" placeholder="Obavezno!"></textarea>
+                                onkeyup="DescriptionCharCount();" placeholder="{{ 'REQUIRED' | translate }}"  ></textarea>
                         </div>
                     </div>
                     <div class="clear40"></div>
@@ -211,13 +211,13 @@
                                 <a href="mailto:mail@mail.com">mail@mail.com</a>
                             </p>
                             <p style="margin-top:20px; text-align:center">
-                                <input type="submit" name="gumb1" id="pregled" value="PREGLED SAŽETKA U OBLIKU KOJI SE ZAPRIMA (WORD DOKUMENT)" class="btn btn-default"
-                                    onclick="submitAction=this.id;">
+                                <button type="submit" name="gumb1" id="pregled"  class="btn btn-default"
+                                    onclick="submitAction=this.id;"> {{'VIEW' | translate }}  </button>
                             </p>
 
                             <p align="center">
-                                <input type="submit" name="gumb" id="slanje" value="PREGLEDAO SAM UPISANE PODATKE I ŽELIM PRIJAVITI SAŽETAK" class="btn btn-primary btn-lg"
-                                    onclick="submitAction=this.id;">
+                                <button type="submit" name="gumb" id="slanje"  class="btn btn-primary btn-lg"
+                                    onclick="submitAction=this.id;">{{'VIEW2' | translate }} </button>
                             </p>
                         </div>
                     </div>

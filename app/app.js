@@ -48,7 +48,68 @@ app.config(['$translateProvider', function ($translateProvider) {
      "ACCO":"Accomodation",
      "HOW":"How to get there",
      "SHOPPING":"Shopping",
-     "DINNING":"Fine dining"
+     "DINNING":"Fine dining",
+
+
+      //ABSTRACT
+
+      'WORD' :  "Look at the summary in the form that is being received (Word document) and replace the wrongly displayed characters with another, identical. If the error persists, contact us at the following email address:",
+"TEXT":"Abstract text",
+"NUMBER" :"Number of Characters:",
+"KEY": "Keyword",
+"35KEY" :"(3-5 keyword splited with ,)",
+
+"TITLESA": "Abstract title" ,
+
+"SAZETAK": "ABSTRACT",
+"AUTHORI":  "This is the author of the exhibitor",
+
+"CHOOSEIN" :  "- - - CHOOSE INSTITUTION - - -",
+"CHOSEPRE":  "- - SELECT THE PRESENTATION THEME - -",
+"UCANCHOOSE":" You can also assign more than one (click the first institution and click CTRL + click on the others",
+"SET":"Assign the author to the institution",
+
+ "CHOOSEDI":" Selected institutions",
+"NAMESURNAME":"Name and surname",
+"AUTHOR":"AUTHOR",
+
+"CHOOSEA":"Determine the number of authors",
+"AUTORSA" :"ABSTRAC AUTHOR",	
+"WRITEIN":"Enter the institution of the author according to the following example: Institution Name, Address, Postal Code City, Country",
+"NPR":" ex.",
+
+"LISTIN":" LIST INSTITUTION",
+"PHONEAU":" Contact phone contact",
+"EMAILAU":" Email contact of the author",
+"NAMEAUTO":" Name and surname contact author",
+
+"THEME":"THEME OF PRESENTATION",
+
+"POSTER":"Poster presentation",
+"ORAL":" Oral presentation",
+"TYPE":"TYPE OF PRESENTATION",
+"ONLINE":"In the event of any difficulties or inability to submit online submissions, please contact us at Email",
+"SAZIZVAN":" Summaries received outside of these instructions will not be considered valid",
+"DIRECTIONS":" instructions for sending summaries",
+"VIEW":"SUMMARY OF THE SUMMARY OF THE WORD DOCUMENT",
+"VIEW2":"I LOOKED AT THE DATA I HAD AND I WANTED TO SUBMIT AN ABSTRACT",
+"ADD":"ADD TO INSTITUTE ON THE LIST",
+"PLSLAT":" Please use Latin characters. If you do not, please see the summary log instructions here:",
+"NAMEINST":"Enter the name of the institution in the example above and add it to the list. Maximum 20 institutions.",
+"REQUIRED":"Required!",
+
+"IMPORTANT":" IMPORTANT"
+
+
+
+
+
+
+
+
+
+
+
 
   });
  
@@ -71,7 +132,7 @@ app.config(['$translateProvider', function ($translateProvider) {
       "WEL_SPEC":"Govor dobrodošlice",
       "REG_INFO":"REGISTRACIJA INFO ",
       "PRO_SER":"Proizvodi/Servisi registracija",
-      "ABSTRACT":"ABSTRAKTNO",
+      "ABSTRACT":"SAŽETAK",
       "LECTURES":"DOGAĐANJA",
       "PRACTICAL":"PRAKIČNO INFO",
       "FORGET":"Zaboravili lozinku",
@@ -96,6 +157,7 @@ app.config(['$translateProvider', function ($translateProvider) {
 "AUTHORI":  "Ovo je autor izlagač",
 
 "CHOOSEIN" :  "- - - ODABERITE INSTITUCIJU - - -",
+"CHOSEPRE":  "- - ODABERITE TEMU PREZENTACIJE - -",
 
 "UCANCHOOSE":" Možete dodijeliti i više njih (kliknite prvu instituciju te CTRL + klik mišem na ostale",
 "SET":" Dodijelite autoru instituciju",
@@ -122,11 +184,12 @@ app.config(['$translateProvider', function ($translateProvider) {
 "ONLINE":"U slučaju bilo kakvih poteškoća i nemogućnosti online prijave sažetaka, kontaktirajte nas na Email",
 "SAZIZVAN":" Sažeci zaprimljeni izvan navedenih uputa neće se smatrati valjanim",
 "DIRECTIONS":" upute za slanje sažetaka",
-
-
+"NAMEINST":"Upišite naziv institucije po gornjem primjeru te je dodajte na listu. Maksimalno 20 institucija.",
+"REQUIRED":"Obavezno!",
 "PLSLAT":" Molimo koristite latinična slova. Ukoliko niste, upute za prijavu sažetaka pogledajte ovdje:",
-
-
+"VIEW":"PREGLED SAŽETKA U OBLIKU KOJI SE ZAPRIMA (WORD DOKUMENT)",
+"VIEW2":"PREGLEDAO SAM UPISANE PODATKE I ŽELIM PRIJAVITI SAŽETAK",
+"ADD":" DODAJ INSTITUCIJU NA LISTU",
 "IMPORTANT":" VAŽNO"
 
 
