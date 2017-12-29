@@ -8,22 +8,25 @@
                             <span class="ws-nowrap">
                                 <i class="fa fa-phone"></i> (123) 555-555</span>
                         </li>
+
                         <li>
-                            <a class="toggle-language" aria-haspopup="true" aria-expanded="true">
-                                <img src="img/blank.gif" class="flag flag-us" alt="English" /> English
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="toggle-language-details dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <a ng-click="change('en')">
-                                        <img src="img/blank.gif" class="flag flag-us" alt="English" /> English</a>
-                                </li>
-                                <li>
-                                    <a ng-click="change('hr')"  >
-                                        <img src="img/blank.gif" class="flag flag-hr" alt="Hrvatski" /> Hrvatski</a>
-                                </li> 
-                            </ul>
-                        </li>
+
+                                
+                                <a   class="dropdown-menu-toggle" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <img id="flag" src="img/blank.gif" class="flag flag-us" alt="English" /> <spane id="language">English</spane>
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLanguage">
+                                    <li>
+                                        <a ng-click="change('en')" >
+                                            <img src="img/blank.gif" class="flag flag-us" alt="English" /> English</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="change('hr')">
+                                            <img src="img/blank.gif" class="flag flag-hr" alt="Español" /> Hrvatski</a>
+                                    </li> 
+                                </ul>
+                            </li> 
                         <li class="login pull-right">
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="hidden-xs">

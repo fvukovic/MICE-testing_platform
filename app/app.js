@@ -132,7 +132,7 @@ app.config(['$translateProvider', function ($translateProvider) {
       "WEL_SPEC":"Govor dobrodošlice",
       "REG_INFO":"REGISTRACIJA INFO ",
       "PRO_SER":"Proizvodi/Servisi registracija",
-      "ABSTRACT":"SAŽETAK",
+      "ABSTRACT":"SAŽETAK ",
       "LECTURES":"DOGAĐANJA",
       "PRACTICAL":"PRAKIČNO INFO",
       "FORGET":"Zaboravili lozinku",
