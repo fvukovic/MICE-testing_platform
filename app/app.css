@@ -76,11 +76,15 @@ h1.page-title {
 .clear40 {
   height: 40px;
   width: 100%;
+  clear: both;
 }
 
 /* PAGE STRUCTURE */
 .entry {
   margin-top: 40px;
+}
+.breadcrumb {
+  margin-bottom: 40px !important;
 }
 ul.breadcrumb {
   padding: 10px 16px;
@@ -150,3 +154,4 @@ input[type=checkbox], input[type=radio] {
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
