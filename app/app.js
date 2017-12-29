@@ -49,6 +49,8 @@ app.config(['$translateProvider', function ($translateProvider) {
      "HOW":"How to get there",
      "SHOPPING":"Shopping",
      "DINNING":"Fine dining",
+     "KEEP":"keep me logged-in",
+     "NEW":"New here",
 
 
       //ABSTRACT
@@ -98,7 +100,56 @@ app.config(['$translateProvider', function ($translateProvider) {
 "NAMEINST":"Enter the name of the institution in the example above and add it to the list. Maximum 20 institutions.",
 "REQUIRED":"Required!",
 
-"IMPORTANT":" IMPORTANT"
+"IMPORTANT":" IMPORTANT",
+
+
+//PRODUCST/SERVICE
+
+"ORDER":"Order",
+"SENDEM":"Send offer via E-mail",
+"SUBTOTAL":"Subtotal",
+"TAX":"TAX",
+"TOTAl":"Total",
+"CARTT":"Cart Totals ",
+"TICKET":"ticket",
+"NAME":"Name",
+"SURNAME":"Surname",
+"EMAIL":"Email",
+"STANDARD":"Standard ticket",
+"ADOTO":"Add to order",
+"QUANTI":"Quantity",
+"LEFT":"Left",
+"PRICE":"Price",
+"PRODUCTST":"Products and Services registration", 
+
+
+//LECTURES
+
+"SELECTEDL":"Selected lecture from calendar",
+"LECINFO":"Lecturer info",
+
+
+//registration
+"PICTURE":"Picture",
+"CLEAR":"Clear",
+"BROWSE":"Browse",
+"REMEMBER":"Remember",
+"REGISTER":"Register",
+"USERNAME":"Username",
+"PASSWORD":"Password",
+
+//Footer
+"GET":"Get in Touch",
+"NEWS":"Newsletter",
+"KEEPOUR":"Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter",
+"SUCCESS":"Success",
+"ADDEDEM":"You've been added to our email list.",
+"LATEST":"Latest Tweets",
+"WAIT":"Please wait...",
+"FOLLOW":" Follow Us", 
+
+
+
 
 
 
@@ -142,6 +193,8 @@ app.config(['$translateProvider', function ($translateProvider) {
       "HOW":"Kako doći do tamo",
       "SHOPPING":"Šoping",
       "DINNING":"Fina jela",
+      "KEEP":"Ostani prijavljen",
+     "NEW":"Novi ovdje",
 
       //ABSTRACT
 
@@ -190,13 +243,61 @@ app.config(['$translateProvider', function ($translateProvider) {
 "VIEW":"PREGLED SAŽETKA U OBLIKU KOJI SE ZAPRIMA (WORD DOKUMENT)",
 "VIEW2":"PREGLEDAO SAM UPISANE PODATKE I ŽELIM PRIJAVITI SAŽETAK",
 "ADD":" DODAJ INSTITUCIJU NA LISTU",
-"IMPORTANT":" VAŽNO"
+"IMPORTANT":" VAŽNO",
+
+
+//PRODUCST/SERVICE
+
+"ORDER":"Narudžba",
+"SENDEM":"Poslati ponudu preko E-mail",
+"SUBTOTAL":"Ukupna suma",
+"TAX":"POREZ",
+"TOTAl":"Ukupno",
+"CARTT":"Košarica ukupno ",
+"TICKET":"Karta",
+"NAME":"Ime",
+"SURNAME":"Prezime",
+"EMAIL":"Email",
+"STANDARD":"Standard karte",
+"ADOTO":"Dodaj u narudžbu",
+"QUANTI":"Količina",
+"LEFT":"Ostalo",
+"PRICE":"Cijena",
+"PRODUCTST":"Registracija proizvoda i servisa", 
 
 
 
+//LECTURES
 
+"SELECTEDL":"Odabrano predavanje iz kalendara",
+"LECINFO":"Informacije o predavaču",
 
+//registration
+"PICTURE":"Picture",
+"CLEAR":"Clear",
+"BROWSE":"Browse",
+"REMEMBER":"Remember",
+"REGISTER":"Register",
+"USERNAME":"Username",
+"PASSWORD":"Password",
 
+"PICTURE":"Fotografija",
+"CLEAR":"Očisti",
+"BROWSE":"Pretraži",
+"REMEMBER":"Zapamti",
+"REGISTER":"Registriraj",
+"USERNAME":"Korisničko ime",
+"PASSWORD":"Lozinka",
+
+//Footer
+"GET":"Kontaktirajte nas",
+"NEWS":"Novinska brošura",
+"KEEPOUR":"Uvijek se razvijaju značajke i tehnologija proizvoda. Unesite svoju e-poštu i pretplatite se na naš newsletter",
+"SUCCESS":"Uspješno",
+"ADDEDEM":"Dodani ste na našu email listu",
+"LATEST":"Najnoviji Tweets",
+"WAIT":"Molim Vas pričekajte...",
+"FOLLOW":" Pratite nas", 
 
 
 
@@ -208,9 +309,7 @@ app.config(['$translateProvider', function ($translateProvider) {
 
 
   });
-  if(window.localStorage.getItem("language")==null){
-    window.localStorage.setItem("language","en")
-  }
+ 
   $translateProvider.preferredLanguage(window.localStorage.getItem("language"));
 }]);
 

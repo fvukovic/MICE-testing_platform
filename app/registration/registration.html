@@ -7,7 +7,7 @@
             <a href="#!/home">Home</a>
           </li>
           <li>
-            <a href="#!/registration">Products and Services registration</a>
+            <a href="#!/registration"> {{ 'PRODUCTST' | translate }}  </a>
           </li>
         </ul>
       </div>
@@ -22,36 +22,36 @@
                   <table class="shop_table cart">
                     <thead>
                       <tr>
-                        <th>
-                          Name
+                        <th> {{ 'NAME' | translate }}
+                           
+                        </th> 
+                        <th>{{ 'PRICE' | translate }}
+                           
                         </th>
-                        <th>
-                          Price
+                        <th>{{ 'LEFT' | translate }}
+                           
                         </th>
-                        <th>
-                          Left
+                        <th>{{ 'QUANTI' | translate }}
+                           
                         </th>
-                        <th>
-                          Quantity
-                        </th>
-                        <th>
-                          Add to order
+                        <th>{{ 'ADOTO' | translate }}
+                       
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr class="cart_table_item">
                         <td class="product-name">
-                          <a class="toggle-title">
+                          <a class="toggle-title">{{ 'STANDARD' | translate }}
                             Standard ticket
                           </a>
                           <div class="toggle-details">
                             <table class="table table-border-none">
                               <thead>
                                 <tr>
-                                  <th>Name:</th>
-                                  <th>Surname:</th>
-                                  <th>Email</th>
+                                  <th>{{ 'NAME' | translate }} Name:</th>
+                                  <th>{{ 'SURNAME' | translate }} Surname:</th>
+                                  <th>{{ 'EMAIL' | translate }} Email</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -98,7 +98,7 @@
                       <tr class="cart_table_item">
                         <td class="product-name">
                           <a class="toggle-title">
-                            VIP ticket
+                            VIP  {{ 'TICKET' | translate }}
                           </a>
                           <div class="toggle-details">
                             <table class="table table-border-none">
@@ -163,12 +163,12 @@
           <div class="col-sm-6">
             <div class="featured-box featured-box-primary align-left mt-xlg">
               <div class="box-content">
-                <h4 class="heading-primary text-uppercase mb-md">Cart Totals</h4>
+                <h4 class="heading-primary text-uppercase mb-md">{{ 'CARTT' | translate }}</h4>
                 <table class="cart-totals">
                   <tbody>
                     <tr class="cart-subtotal">
                       <th>
-                        <strong>Total</strong>
+                        <strong> {{ 'TOTAL' | translate }}</strong>
                       </th>
                       <td>
                         <strong>
@@ -178,7 +178,7 @@
                     </tr>
                     <tr class="cart-subtotal">
                       <th>
-                        <strong>TAX</strong>
+                        <strong> {{ 'TAX' | translate }}</strong>
                       </th>
                       <td>
                         <strong>
@@ -188,7 +188,7 @@
                     </tr>
                     <tr class="total">
                       <th>
-                        <strong>Subtotal</strong>
+                        <strong>  {{ 'SUBTOTAL' | translate }}</strong>
                       </th>
                       <td>
                         <strong>
@@ -208,9 +208,9 @@
 
     <div class="checkbox">
       <label>
-        <input type="checkbox"> Send offer via E-mail</label>
+        <input type="checkbox">  {{ 'SENDEM' | translate }}</label>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg">Order</button>
+    <button type="submit" class="btn btn-primary btn-lg">  {{ 'ORDER' | translate }}</button>
   </div>
 </div>
 </div>
