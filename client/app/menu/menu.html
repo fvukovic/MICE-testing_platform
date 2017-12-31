@@ -1,0 +1,169 @@
+<header id="header" data-ng-controller="HomeCtrl" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 140, "stickySetTop": "-140px"}'>
+    <div class="header-body">
+        <div class="header-top">
+            <div class="container">
+                <nav class="header-nav-top">
+                    <ul class="nav nav-pills">
+                        <li class="hidden-xs">
+                            <span class="ws-nowrap">
+                                <i class="fa fa-phone"></i> (123) 555-555</span>
+                        </li>
+
+                        <li>
+
+                                
+                                <a   class="dropdown-menu-toggle" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <img id="flag" src="img/blank.gif" class="flag flag-us" alt="English" /> <spane id="language">English</spane>
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLanguage">
+                                    <li>
+                                        <a ng-click="change('en')" >
+                                            <img src="img/blank.gif" class="flag flag-us" alt="English" /> English</a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="change('hr')">
+                                            <img src="img/blank.gif" class="flag flag-hr" alt="Español" /> Hrvatski</a>
+                                    </li> 
+                                </ul>
+                            </li> 
+                        <li class="login pull-right">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="hidden-xs">
+                                    <p class="navbar-text">{{ 'HAVE_ACC' | translate }} ?</p>
+                                    <h1></h1>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="toggle-login login-btn">
+                                        <b>{{'LOGIN' | translate }}</b>
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul id="login-dp" class="toggle-login-details dropdown-menu">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                                        <div class="form-group">
+                                                            <label class="sr-only" for="exampleInputEmail2">  Email {{ 'ADDRESS' | translate }} </label>
+                                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="sr-only" for="exampleInputPassword2">{{'PASSWORD' | translate }}</label>
+                                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                                            <div class="help-block text-right">
+                                                                <a href="">{{'FORGET' | translate }}?</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-primary btn-block">{{'SIGN' | translate }}  </button>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">{{'KEEP' | translate }}  
+                                                            </label>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="bottom text-center">
+                                                    {{'NEW' | translate }} ?
+                                                    <a href="#!/register">
+                                                        <b>{{'REGISTER' | translate }}</b>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="header-container container">
+            <div class="header-row">
+                <div class="header-column">
+                    <h1 class="page-title"> {{'CONF_NAME' | translate }}</h1>
+                </div>
+                <div class="header-column">
+                    <div class="header-logo">
+                        <a href="#!/home">
+                            <img alt="" width="110" height="60" src="img\logo.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 1px; width: 100%; background: #83a3bf;"></div>
+        <div class="header-container container header-nav header-nav-center">
+            <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse">
+                <nav>
+                    <ul class="nav nav-pills" id="mainNav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="index.html">
+                                {{'MAIN' | translate }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#!/conference-info"> {{'CONF_INF' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href=""> {{'LOC_HIS' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href=""> {{'WEL_SPEC' | translate }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="index.html">
+                                {{'REG_INFO' | translate }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#!/registration"> {{'PRO_SER' | translate }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#!/abstracts"> {{'ABSTRACT' | translate }}</a>
+                        </li>
+                        <li>
+                            <a href="#!/events"> {{'LECTURES' | translate }}</a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="index.html">
+                                {{'PRACTICAL' | translate }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href=""> {{'ACCO' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href=""> {{'HOW' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href=""> {{'SHOPPING' | translate }}</a>
+                                </li>
+                                <li>
+                                    <a href=""> {{'DINNING' | translate }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<script>
+    $(".toggle-login").click(function () {
+        $(this).next(".toggle-login-details").toggle("fast");
+    });
+    $(".toggle-language").click(function () {
+        $(this).next(".toggle-language-details").toggle("fast");
+    });
+</script>

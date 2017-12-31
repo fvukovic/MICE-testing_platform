@@ -1,0 +1,228 @@
+<div class="entry">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="sazeci_slanje.php" method="post" name="forma" id="forma" onsubmit="return provjera_Abstract_forme()">
+                    <div class="alert alert-danger text-smaller2">
+                        <button class="close" type="button" data-dismiss="alert">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <p>
+                            <strong>         {{'IMPORTANT' | translate }} </strong>          {{'PLSLAT' | translate }} 
+                            <a href="">         {{'DIRECTIONS' | translate }}</a>.          {{'SAZIZVAN' | translate }}   </p>
+                    </div>
+                    <div class="alert alert-warning text-smaller2">
+                        <button class="close" type="button" data-dismiss="alert">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <p>        {{'ONLINE' | translate }} 
+                            <a href="mailto:mail@mail.com">mail@mail.com</a>
+                        </p>
+                    </div>
+                    <div class="clear40"></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-chevron-circle-right"></i>        {{'TYPE' | translate }} </h4>
+                            <p>
+                                <input name="type" type="radio" id="vrsta1" value="Oral" checked="checked">        {{'ORAL' | translate }}  
+
+                                <input name="type" type="radio" id="vrsta2" value="Poster">        {{'POSTER' | translate }}  
+                            </p>
+                            <div class="clear40-small2"></div>
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-chevron-circle-right"></i>        {{'THEME' | translate }} </h4>
+                            <div class="form-group">
+                                <select class="form-control" name="tema" id="tema">
+                                    <option value="no" selected="selected" >   {{'CHOSEPRE' | translate }}      </option>
+                                    <option value="Alergijski rinitis">         Alergijski rinitis</option>
+                                    <option value="Rinosinuitis">        Rinosinuitis</option>
+                                    <option value="Sinonazalna polipoza">      Sinonazalna polipoza</option>
+                                    <option value="Poremećaj njuha">          Poremećaj njuha</option>
+                                    <option value="Konzervativna terapija u rinologiji">          Konzervativna terapija u rinologiji</option>
+                                    <option value="Dječje rinološke bolesti"> Dječje rinološke bolesti</option>
+                                    <option value="OSA">OSA</option>
+                                    <option value="Endoskopska sinusna kirurgija">  Endoskopska sinusna kirurgija</option>
+                                    <option value="Navigacijska endoskopska sinusna kirurgija (NESS)">    Navigacijska endoskopska sinusna kirurgija (NESS)</option>
+                                    <option value="Plastično-rekonstruktivna kirurgija nosa">       Plastično-rekonstruktivna kirurgija nosa</option>
+                                    <option value="Tumori nosa i paranazalnih šupljina">      Tumori nosa i paranazalnih šupljina</option>
+                                    <option value="Kompjuterski asistirana kirurgija sinusa">    Kompjuterski asistirana kirurgija sinusa</option>
+                                    <option value="Kirurgija lubanjske osnovice">        Kirurgija lubanjske osnovice</option>
+                                    <option value="Radiološke tehnike u rinologiji">       Radiološke tehnike u rinologiji</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-user"></i>         {{'MAIN' | translate }}  </h4>
+                            <p>        {{'MAIN' | translate }}  </p>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-icon-left">
+                                    <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
+                                    <label>
+                                        <strong>        {{'NAMEAUTO' | translate }}  </strong> (npr. Ivan Horvat)</label>
+                                    <input name="autorime" id="autorime" class="form-control" type="text" required="" placeholder="{{ 'REQUIRED' | translate }}">
+                                </div>
+                                <div class="form-group form-group-icon-left">
+                                    <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
+                                    <label>
+                                        <strong>         {{'EMAILAU' | translate }}  </strong>
+                                    </label>
+                                    <input name="autoremail" id="autoremail" class="form-control" type="email" required=""  placeholder="{{ 'REQUIRED' | translate }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-icon-left">
+                                    <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
+                                    <label>
+                                        <strong>        {{'PHONEAU' | translate }}  </strong>
+                                    </label>
+                                    <input name="autortelefon" id="autortelefon" class="form-control" type="text" required=""  placeholder="{{ 'REQUIRED' | translate }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear40"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-university"></i>        {{'LISTIN' | translate }}  </h4>
+                            <p>         {{'WRITEIN' | translate }}  
+                                <strong>        {{'NPR' | translate }}  .</strong> KBC Zagreb, Kišpatićeva 12, 10000 Zagreb, Hrvatska)</p>
+                        </div>
+                        <div class="col-md-9">
+                            <input name="institucijaIme" id="institucijaIme" class="form-control form-control2 inputMy" type="text" placeholder="{{ 'NAMEINST' | translate }}"  >
+                        </div>
+                        <div class="col-md-3" style="text-align:left;">
+                            <input type="button" value=" {{'ADD' | translate }}" onclick="dodajInstitucije();" class="btn btn-default btnMy">
+                        </div>
+
+                    </div>
+                    <div class="col-md-12" id="institucijeIzlist" style="line-height:30px;"></div>
+
+                    <div class="clear40"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-users"></i>         {{'AUTORSA' | translate }}  </h4>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="labelMy2">        {{'CHOOSEA' | translate }} </label>
+                                        <select name="brojautora" id="brojautora" onchange="broj(this);" class="form-control" style="max-width:65px;">
+                                            <option value="1" selected="selected">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 containerAutor1" id="autor1" style="background-color:#f5f5f5;">
+                                <h5 style="border-bottom:1px solid #d4d4d4;">
+                                    <i class="fa fa-user-plus"></i>        {{'AUTHOR' | translate }}  1</h5>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <br>
+                                        <div class="form-group form-group-icon-left">
+                                            <i class="fa fa-caret-right input-icon input-icon-show input-iconMy"></i>
+                                            <label>
+                                                <strong>        {{'NAMESURNAME' | translate }}  </strong> (npr. Ivan Horvat)</label>
+                                            <input name="autorime1" id="autorime1" class="form-control inputMy" type="text" required="" placeholder="npr. Ivan Horvat">
+                                            <div class="text-smaller" style="padding:3px;">
+                                                <strong>        {{'CHOOSEDI' | translate }}  </strong>
+                                            </div>
+                                            <div id="authorInstitutionList1" class="text-smaller" style="padding:3px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>
+                                                <strong>        {{'SET' | translate }} </strong>
+                                                <br>        {{'UCANCHOOSE' | translate }}  </label>
+                                            <select multiple="" class="form-control inputMy" name="autorInstitucija1" id="autorInstitucija1" onchange="autorInstitucijaFunction1(this);"
+                                                style="font-size:13px;">
+                                                <option value="no" hidden="">        {{'CHOOSEIN' | translate }}  </option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p>&nbsp;</p>
+                                        <input type="radio" name="autorpresenting" id="autorpresenting1" value="yes1">        {{'AUTHORI' | translate }}    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear40"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 style="border-bottom:1px solid #d4d4d4;">
+                                <i class="fa fa-file-text"></i>        {{'SAZETAK' | translate }}   </h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>
+                                    <strong>        {{'TITLESA' | translate }}  </strong>
+                                </label>
+                                <input name="abstract_title" id="abstract_title" class="form-control" type="text" required="" placeholder="{{ 'REQUIRED' | translate }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="display:BLOCK;">
+                            <div class="form-group">
+                                <label>
+                                    <strong>        {{'KEY' | translate }} </strong>        {{'35KEY' | translate }}  </label>
+                                <input name="abstract_key" id="abstract_key" class="form-control" type="text" placeholder="{{ 'REQUIRED' | translate }}" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label>
+                                <strong>         {{'TEXT' | translate }}  </strong>
+                                <span class="text-smaller" style="float:right; color:red;margin-left:10px;">         {{'NUMBER' | translate }} 
+                                    <span id="ukupno_znakova">0</span> / 2000</span>
+                            </label>
+                            <textarea name="abstract_text" id="abstract_text" class="form-control" rows="13" required="" onkeydown="DescriptionCharCount();"
+                                onkeyup="DescriptionCharCount();" placeholder="{{ 'REQUIRED' | translate }}"  ></textarea>
+                        </div>
+                    </div>
+                    <div class="clear40"></div>
+
+
+                    <div class="row">
+                        <div class="col-md-12" style="border:dashed 1px #CCC;">
+                            <p>        {{'WORD' | translate }}        
+                                <a href="mailto:mail@mail.com">mail@mail.com</a>
+                            </p>
+                            <p style="margin-top:20px; text-align:center">
+                                <button type="submit" name="gumb1" id="pregled"  class="btn btn-default"
+                                    onclick="submitAction=this.id;"> {{'VIEW' | translate }}  </button>
+                            </p>
+
+                            <p align="center">
+                                <button type="submit" name="gumb" id="slanje"  class="btn btn-primary btn-lg"
+                                    onclick="submitAction=this.id;">{{'VIEW2' | translate }} </button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
