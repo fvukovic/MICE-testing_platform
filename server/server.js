@@ -23,18 +23,27 @@ MongoClient.connect(url,function(err,dba){
         console.log("Connected")  
          }
 });
-
-
+ 
 app.get("/menu",function(req,res,next){ 
     var response = [];  
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
 
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
     var collection  = db.collection("conferencemenu");
   collection.find({}).toArray(function(err,result){
     if(err){
        console.log(err);
     }else{
            for(var x=0;x<result.length;x++){
-                (JSON.stringify(result[x]));
+                (res.send(result[x]));
               
            }
     }

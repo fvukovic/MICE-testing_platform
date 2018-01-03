@@ -12,18 +12,17 @@ app.config(['$routeProvider', function ($routeProvider, $scope) {
 app.controller('HomeCtrl', function ($scope, $translate,$http) {
   var request = $http({
     method: "GET",
-    url: '/menu',   
+    url: 'http://localhost:3000/menu',   
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 
 });
 
 request.success(function (data) {
-    alert("Prijedlog poslan!"+data);
+  console.log(data);
 
 });
-request.error(function (data) {
-  alert("Prijedlog poslan!"+data);
-
+request.error(function (data) { 
+    console.log(data);
 });
   if(window.localStorage.getItem("language")==null){
     window.localStorage.setItem("language","en")
