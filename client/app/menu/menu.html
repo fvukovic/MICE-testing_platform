@@ -1,4 +1,4 @@
-<header id="header" data-ng-controller="HomeCtrl" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 140, "stickySetTop": "-140px"}'>
+<header id="header" data-ng-controller="MenuCtrl" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 140, "stickySetTop": "-140px"}'>
     <div class="header-body">
         <div class="header-top">
             <div class="container">
@@ -102,54 +102,13 @@
             <div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse">
                 <nav>
                     <ul class="nav nav-pills" id="mainNav">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="index.html">
-                                {{'MAIN' | translate }}
+                        <li ng-repeat="MenuFirstLevel in menu.menu" class="dropdown">
+                            <a href="#!/indeks" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}" ng-click='externalLink(MenuFirstLevel["html"]["en"])'>
+                                {{MenuFirstLevel["label"]["en"]}}
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul ng-repeat="MenuSecondLevel in MenuFirstLevel.nodes" class="dropdown-menu">
                                 <li>
-                                    <a href="#!/conference-info"> {{'CONF_INF' | translate }}</a>
-                                </li>
-                                <li>
-                                    <a href=""> {{'LOC_HIS' | translate }}</a>
-                                </li>
-                                <li>
-                                    <a href=""> {{'WEL_SPEC' | translate }}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="index.html">
-                                {{'REG_INFO' | translate }}
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#!/registration"> {{'PRO_SER' | translate }}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#!/abstracts"> {{'ABSTRACT' | translate }}</a>
-                        </li>
-                        <li>
-                            <a href="#!/events"> {{'LECTURES' | translate }}</a>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="index.html">
-                                {{'PRACTICAL' | translate }}
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href=""> {{'ACCO' | translate }}</a>
-                                </li>
-                                <li>
-                                    <a href=""> {{'HOW' | translate }}</a>
-                                </li>
-                                <li>
-                                    <a href=""> {{'SHOPPING' | translate }}</a>
-                                </li>
-                                <li>
-                                    <a href=""> {{'DINNING' | translate }}</a>
+                                    <a href="#!/indeks" ng-click='externalLink(MenuSecondLevel["html"]["en"])'> {{MenuSecondLevel["label"]["en"]}}</a>
                                 </li>
                             </ul>
                         </li>

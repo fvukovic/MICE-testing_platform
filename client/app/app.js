@@ -10,8 +10,9 @@ var app = angular.module('myApp', [
   'myApp.events',
   'myApp.abstracts',
   'myApp.conference-info',
-  'myApp.view1',
+  'myApp.menu',
   'myApp.view2',
+  'myApp.indeks',
   'myApp.version',
   'pascalprecht.translate'
 ]).

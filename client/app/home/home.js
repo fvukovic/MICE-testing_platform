@@ -9,50 +9,28 @@ app.config(['$routeProvider', function ($routeProvider, $scope) {
   });
 }])
 
-app.controller('HomeCtrl', function ($scope, $translate,$http) {
+app.controller('HomeCtrl', function ($scope, $translate, $http) {
+  $scope.fili ="";
   var request = $http({
     method: "GET",
-    url: 'http://localhost:3000/menu',   
+    url: 'http://localhost:3000/menu',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 
-});
+  });
 
-request.success(function (data) {
-  console.log(data);
-
-});
-request.error(function (data) { 
+  request.success(function (data) {
     console.log(data);
-});
-  if(window.localStorage.getItem("language")==null){
-    window.localStorage.setItem("language","en")
-  }
-  if(window.localStorage.getItem("language")=="en"){
-    $("#language").html("English");
-    $("#flag").removeClass();
-    $("#flag").addClass("flag");
-    $("#flag").addClass("flag-us");
-  }
-  if(window.localStorage.getItem("language")=="hr"){
-    $("#language").html("Hrvatski");
-    $("#flag").removeClass();
-    $("#flag").addClass("flag");
-    $("#flag").addClass("flag-hr");
-  }
-  $scope.change = function (language) {
-    $translate.use(language); 
-    if (language == "en") {
-      language = "us"
-      $("#language").html("English");
-    }
-    if (language == "hr") {
-      $("#language").html("Hrvatski");
+    for (var x = 0; x < data.length; x++) {
+      console.log(data[x].address);
+      for (var y = 0; y < data[x].length; y++) {
+
+      }
     }
 
-    $("#flag").removeClass();
-    $("#flag").addClass("flag");
-    $("#flag").addClass("flag-" + language);
-    window.localStorage.setItem("language", language);
-  }
+  });
+  request.error(function (data) {
+    console.log(data);
+  });
+
 });
 
