@@ -9,7 +9,22 @@ app.config(['$routeProvider', function ($routeProvider, $scope) {
   });
 }])
 
-app.controller('HomeCtrl', function ($scope, $translate) {
+app.controller('HomeCtrl', function ($scope, $translate,$http) {
+  var request = $http({
+    method: "GET",
+    url: '/menu',   
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+});
+
+request.success(function (data) {
+    alert("Prijedlog poslan!"+data);
+
+});
+request.error(function (data) {
+  alert("Prijedlog poslan!"+data);
+
+});
   if(window.localStorage.getItem("language")==null){
     window.localStorage.setItem("language","en")
   }
