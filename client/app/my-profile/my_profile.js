@@ -26,13 +26,28 @@ angular.module('myApp.my-profile', ['ngRoute'])
             inputfilepreview: "",
             rememeberlogin: ""
         }
+
+        /* Get row from register where id = sesion user id --> show result in inputs */
+        var request = $http({
+            method: "GET",
+            url: 'http://localhost:3000/register',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        
+          });
+          request.success(function (data) {
+            $scope.menu = data;
+            console.log(data);
+        
+          });
+
+
+        /* btn save form - update row in register table where user id = sesion user id */
         $scope.save = function () {
             var request = $http({
                 method: "post",
                 url: 'http://localhost:3000/register',
                 data: $scope.user
 
- 
             });
             request.success(function (data) {
                 console.log(data);

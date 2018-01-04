@@ -141,7 +141,7 @@ app.config(['$translateProvider', function ($translateProvider) {
 
     //My profile
     "MYPROFILE": "My Profile",
-    "SAVE": "Save",
+    "SAVE": "Save changes",
     "PASSWORDREPEAT": "Repeat the password",
 
     //Footer
@@ -287,7 +287,7 @@ app.config(['$translateProvider', function ($translateProvider) {
 
     //My profile
     "MYPROFILE": "Moj profil",
-    "SAVE": "Spremi",
+    "SAVE": "Spremi promjene",
     "PASSWORDREPEAT": "Ponovite lozinku",
 
     //Footer
