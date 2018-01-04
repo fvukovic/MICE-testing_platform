@@ -42,7 +42,7 @@
                                         <li>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                                    <form class="form" role="form" method="post"   accept-charset="UTF-8" id="login-nav">
                                                         <div class="form-group">
                                                             <label class="sr-only" for="exampleInputEmail2">  Email {{ 'ADDRESS' | translate }} </label>
                                                             <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
@@ -55,7 +55,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary btn-block">{{'SIGN' | translate }}  </button>
+                                                            <button  ng-click="login()" class="btn btn-primary btn-block">{{'SIGN' | translate }}  </button>
                                                         </div>
                                                         <div class="checkbox">
                                                             <label>
@@ -103,16 +103,33 @@
                 <nav>
                     <ul class="nav nav-pills" id="mainNav">
                         <li ng-repeat="MenuFirstLevel in menu.menu" class="dropdown">
-                            <a href="#!/indeks" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}" ng-click='externalLink(MenuFirstLevel["html"]["en"])'>
-                                {{MenuFirstLevel["label"]["en"]}}
+                            <a href="#!/indeks" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}" ng-click='externalLink(MenuFirstLevel["html"])'>
+                                {{MenuFirstLevel["label"][language]}}
                             </a>
                             <ul ng-repeat="MenuSecondLevel in MenuFirstLevel.nodes" class="dropdown-menu">
                                 <li>
-                                    <a href="#!/indeks" ng-click='externalLink(MenuSecondLevel["html"]["en"])'> {{MenuSecondLevel["label"]["en"]}}</a>
+                                    <a href="#!/indeks" ng-click='externalLink(MenuSecondLevel["html"])'>  {{MenuSecondLevel["label"][language]}}</a>
                                 </li>
                             </ul>
                         </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="index.html">
+                                {{'REG_INFO' | translate }}(static)
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#!/registration"> {{'PRO_SER' | translate }}</a>
+                                </li>
+                            </ul>
+                        </li>  
+                        <li>
+                            <a href="#!/abstracts"> {{'ABSTRACT' | translate }}</a>
+                        </li>
+                        <li>
+                            <a href="#!/events"> {{'LECTURES' | translate }}</a>
+                        </li> 
                     </ul>
+                    
                 </nav>
             </div>
         </div>

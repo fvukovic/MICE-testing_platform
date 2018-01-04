@@ -105,6 +105,7 @@ app.post("/login", function (req, res, next) {
         password: 1,
         status: 1,
     };
+    res.send(succes_msg);
     db.collection("user").findOne({ "username": req.body.username }, function (err, result) {
         if (err) throw err;
         console.log(req.body.username);

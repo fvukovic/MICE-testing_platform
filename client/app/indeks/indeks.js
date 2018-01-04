@@ -12,6 +12,13 @@ angular.module('myApp.indeks', ['ngRoute'])
 .controller('IndeksCtrl', function($scope, $sce) {
 
   $scope.trustedHtml = function () {
-    return $sce.trustAsHtml(window.localStorage.getItem("externalHtml"));
+    var html = JSON.parse(window.localStorage.getItem("externalHtml")); 
+    if(window.localStorage.getItem("language")=="en"){
+       return   $sce.trustAsHtml(html["en"]); 
+    }else{
+      return $sce.trustAsHtml(html["hr"]); 
+    } 
+
+ 
 }
 });

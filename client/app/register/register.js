@@ -15,7 +15,15 @@ angular.module('myApp.register', ['ngRoute'])
         return new Array(num);   
     } 
 
-    $scope.register = function(){ 
+    $scope.preview = function(){
+        alert("Previewed");
+    };
+    $scope.update = function(){
+        alert("Updated");
+    }
+
+    $scope.register = function(){     
+        alert();
         var request = $http({
           method: "post",
           url: 'http://localhost:3000/register',   
