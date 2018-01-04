@@ -10,6 +10,19 @@ app.config(['$routeProvider', function ($routeProvider, $scope) {
 }])
 
 app.controller('MenuCtrl', function ($scope, $http, $translate) {
+  $scope.user={
+    usernmae:"",
+    password:"",
+  }
+  alert(window.localStorage.getItem("user"));
+  if(window.localStorage.getItem("user")==1){
+    $scope.logg=false; 
+    $scope.register="/registration" 
+    $scope.username= window.localStorage.getItem("username")
+  }else{
+     $scope.logg=true;
+    $scope.register="/register"
+  }
 
 
   var request = $http({
@@ -24,16 +37,25 @@ app.controller('MenuCtrl', function ($scope, $http, $translate) {
 
   });
 
-  $scope.login = function () {
+  $scope.logout= function(){ 
+    window.localStorage.removeItem("user");
+    window.location.reload();
+  }
+
+  $scope.login = function () {  alert($scope.user.password);
     var request = $http({
       method: "post",
       url: 'http://localhost:3000/login',
-      data: { "username": "adm222din", "email": "ema2d2dil", "password": "123" },
+      data:  $scope.user
 
     });
     request.success(function (data) {
+      console.log(data);
       if (data.status == 1) {
         alert("Uspjesno ste prijavili");
+        window.localStorage.setItem("user",1)
+        window.location.reload();
+        window.localStorage.setItem("username",$scope.user.username); 
       } else {
         alert("lose jaro ");
       }

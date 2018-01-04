@@ -27,8 +27,9 @@
                                     </li> 
                                 </ul>
                             </li> 
-                        <li class="login pull-right">
-                            <ul class="nav navbar-nav navbar-right">
+                            <div>
+                        <li ng-show="logg==true"  class="login pull-right">
+                            <ul  class="nav navbar-nav navbar-right">
                                 <li class="hidden-xs">
                                     <p class="navbar-text">{{ 'HAVE_ACC' | translate }} ?</p>
                                     <h1></h1>
@@ -37,19 +38,19 @@
                                     <a class="toggle-login login-btn">
                                         <b>{{'LOGIN' | translate }}</b>
                                         <span class="caret"></span>
-                                    </a>
-                                    <ul id="login-dp" class="toggle-login-details dropdown-menu">
+                                    </a>{{logg}}
+                                    <ul    id="login-dp" class="toggle-login-details dropdown-menu">
                                         <li>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <form class="form" role="form" method="post"   accept-charset="UTF-8" id="login-nav">
+                                                    <form    class="form" role="form" method="post"   accept-charset="UTF-8" id="login-nav">
                                                         <div class="form-group">
                                                             <label class="sr-only" for="exampleInputEmail2">  Email {{ 'ADDRESS' | translate }} </label>
-                                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                                            <input type="text" ng-model="user.username" class="form-control" id="exampleInputEmail2" placeholder="Username" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="sr-only" for="exampleInputPassword2">{{'PASSWORD' | translate }}</label>
-                                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                                            <input type="password" ng-model="user.password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
                                                             <div class="help-block text-right">
                                                                 <a href="">{{'FORGET' | translate }}?</a>
                                                             </div>
@@ -68,6 +69,39 @@
                                                     {{'NEW' | translate }} ?
                                                     <a href="#!/register">
                                                         <b>{{'REGISTER' | translate }}</b>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </div>
+                        <li ng-show="logg==false" id="logout"  class="login logout pull-right">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="hidden-xs"> 
+                                    <h1></h1>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="toggle-login login-btn">
+                                        <b>{{username}}</b>
+                                        <span class="caret"></span>
+                                    </a> 
+                                    <ul     id="login-dp" class="toggle-login-details dropdown-menu">
+                                        <li>
+                                            <div class="row">
+                                             
+                                                <div class="bottom text-center">
+                                                  
+                                                    <a ng-click="logout()">
+                                                        <b>{{'LOGOUT' | translate }}</b>
+                                                    </a>
+                                                </div>
+                                                <div class="bottom text-center">
+                                                  
+                                                    <a href="/my-profile">
+                                                        <b>{{'LOGOUT' | translate }}</b>
                                                     </a>
                                                 </div>
                                             </div>
@@ -111,17 +145,10 @@
                                     <a href="#!/indeks" ng-click='externalLink(MenuSecondLevel["html"])'>  {{MenuSecondLevel["label"][language]}}</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="index.html">
-                                {{'REG_INFO' | translate }}(static)
-                            </a>
-                            <ul class="dropdown-menu">
+                        </li> 
                                 <li>
-                                    <a href="#!/registration"> {{'PRO_SER' | translate }}</a>
-                                </li>
-                            </ul>
-                        </li>  
+                                    <a href="#!{{register}}"> {{'PRO_SER' | translate }}</a>
+                                </li>    
                         <li>
                             <a href="#!/abstracts"> {{'ABSTRACT' | translate }}</a>
                         </li>

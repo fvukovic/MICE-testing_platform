@@ -87,7 +87,7 @@ app.get("/menu", function (req, res, next) {
 
         });
         res.send(succes_msg);
-        if (succes_msg.status == 0) {
+        if (succes_msg.status == 1) {
             request.password = passwordHash.generate(req.body.password)
             db.collection("user").insertOne(request, function (err, res) {
                 if (err) throw err;
@@ -103,20 +103,23 @@ app.post("/login", function (req, res, next) {
     var succes_msg = {
         username: 1,
         password: 1,
-        status: 1,
-    };
-    res.send(succes_msg);
+        status: 0,
+    }; 
+
     db.collection("user").findOne({ "username": req.body.username }, function (err, result) {
         if (err) throw err;
         console.log(req.body.username);
         if (result == null) {
             console.log("ne postoji");
-            succes_msg.username = 0;
-            succes_msg.status = 0;
-        } else {
-            console.log(result.password + "      " + passwordHash.generate(req.body.password));
-            if (result.password == passwordHash.generate(req.body.password)) {
+            succes_msg.username = 0; 
+            res.send(succes_msg);
+        } else { 
+            if ( passwordHash.verify(req.body.password, result.password)) {
                 succes_msg.status = 1;
+                res.send(succes_msg);
+            }else{
+                succes_msg.password = 0;    
+                res.send(succes_msg);
             }
         }
     });

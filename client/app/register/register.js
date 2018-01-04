@@ -37,6 +37,7 @@ angular.module('myApp.register', ['ngRoute'])
                 console.log(data);
                 if (data.status == 1) {
                     alert("Uspjesno ste registrirali");
+                    window.localStorage.setItem("user","1");
                 } else {
                     alert("Losa registracija");
                 }

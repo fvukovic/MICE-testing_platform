@@ -9,7 +9,7 @@ angular.module('myApp.registration', ['ngRoute'])
     });
   }])
 
-  .controller('RegistrationCtrl', [function ($scope, $http) { 
+  .controller('RegistrationCtrl', function ($scope, $http) { 
     $scope.user = {
       name: "",
       surname: "",
@@ -28,5 +28,6 @@ angular.module('myApp.registration', ['ngRoute'])
           data: $scope.user
 
       });
+    }
 
-  }]);
+  });
