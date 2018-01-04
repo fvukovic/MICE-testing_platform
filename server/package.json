@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "mongodb": "^2.2.33",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "password-hash": "^1.2.2"
   },
   "author": "Filip Vuković",
   "license": "ISC"

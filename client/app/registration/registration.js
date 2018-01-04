@@ -9,6 +9,7 @@ angular.module('myApp.registration', ['ngRoute'])
     });
   }])
 
-  .controller('RegistrationCtrl', [function () {
+  .controller('RegistrationCtrl', [function () { 
+
 
   }]);

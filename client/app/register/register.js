@@ -9,7 +9,32 @@ angular.module('myApp.register', ['ngRoute'])
   });
 }])
 
-.controller('RegisterCtrl', [function() {
+.controller('RegisterCtrl', function($scope,$http ) { 
+    $scope.fili = {"username":"filip"}; 
+    $scope.getNumber = function(num) {
+        return new Array(num);   
+    } 
+
+    $scope.register = function(){ 
+        var request = $http({
+          method: "post",
+          url: 'http://localhost:3000/register',   
+          data:  {"username":"adm222din","email":"ema2d2dil","password":"123"}, 
+  
+      });
+      request.success(function (data) {
+          console.log(data);
+         if(data.status==1){
+             alert("Uspjesno ste registrirali");
+         }else{
+            alert("Losa registracija");
+         }
+          
+      });
+      }
+
+
+
   $(document).on('click', '#close-preview', function(){ 
     $('.image-preview').popover('hide');
     // Hover befor close the preview
@@ -68,4 +93,4 @@ $(function() {
         reader.readAsDataURL(file);
     });  
 });
-}]);
+});
