@@ -9,7 +9,24 @@ angular.module('myApp.registration', ['ngRoute'])
     });
   }])
 
-  .controller('RegistrationCtrl', [function () { 
+  .controller('RegistrationCtrl', [function ($scope, $http) { 
+    $scope.user = {
+      name: "",
+      surname: "",
+      username: "",
+      password: "",
+      email: "",
+      address: "",
+      companyinfo: "",
+      inputfilepreview: "",
+      rememeberlogin: ""
+  }
+  $scope.register = function () {
+      var request = $http({
+          method: "post",
+          url: 'http://localhost:3000/register',
+          data: $scope.user
 
+      });
 
   }]);
