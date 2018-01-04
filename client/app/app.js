@@ -139,6 +139,11 @@ app.config(['$translateProvider', function ($translateProvider) {
     "USERNAME": "Username",
     "PASSWORD": "Password",
 
+    //My profile
+    "MYPROFILE": "My Profile",
+    "SAVE": "Save",
+    "PASSWORDREPEAT": "Repeat the password",
+
     //Footer
     "GET": "Get in Touch",
     "NEWS": "Newsletter",
@@ -269,6 +274,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     "REGISTER": "Register",
     "USERNAME": "Username",
     "PASSWORD": "Password",
+    "PASSWORDREPEAT": "Repeat the password",
 
     "PICTURE": "Fotografija",
     "CLEAR": "Očisti",
@@ -277,6 +283,12 @@ app.config(['$translateProvider', function ($translateProvider) {
     "REGISTER": "Registriraj",
     "USERNAME": "Korisničko ime",
     "PASSWORD": "Lozinka",
+    "PASSWORDREPEAT": "Ponovite lozinku",
+
+    //My profile
+    "MYPROFILE": "Moj profil",
+    "SAVE": "Spremi",
+    "PASSWORDREPEAT": "Ponovite lozinku",
 
     //Footer
     "GET": "Kontaktirajte nas",

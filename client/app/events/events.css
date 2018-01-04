@@ -782,3 +782,8 @@ table.fc-header{
         border: 3px solid #2f71aa;
         padding: 10px;
     }
+    @media(max-width:768px){
+    .fc-header td {
+        display: -webkit-box;
+    }
+}

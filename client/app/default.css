@@ -379,18 +379,6 @@ html .btn-primary {
 	border-color: #0088cc #0088cc #006699;
 }
 
-html .btn-primary:hover {
-	border-color: #0099e6 #0099e6 #0077b3;
-	background-color: #0099e6;
-}
-
-html .btn-primary:active,
-html .btn-primary:focus,
-html .btn-primary:active:hover,
-html .btn-primary:active:focus {
-	border-color: #0077b3 #0077b3 #0077b3;
-	background-color: #0077b3;
-}
 
 html .btn-primary.dropdown-toggle {
 	border-left-color: #0077b3;

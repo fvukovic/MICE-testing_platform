@@ -9,8 +9,8 @@ angular.module('myApp.registration', ['ngRoute'])
     });
   }])
 
-  .controller('RegistrationCtrl', [function ($scope, $http) { 
-    $scope.user = {
+  .controller('RegistrationCtrl', [function ($scope, $http) {
+    /* $scope.user = {
       name: "",
       surname: "",
       username: "",
@@ -20,13 +20,14 @@ angular.module('myApp.registration', ['ngRoute'])
       companyinfo: "",
       inputfilepreview: "",
       rememeberlogin: ""
-  }
-  $scope.register = function () {
+    }
+    $scope.register = function () {
       var request = $http({
-          method: "post",
-          url: 'http://localhost:3000/register',
-          data: $scope.user
+        method: "post",
+        url: 'http://localhost:3000/register',
+        data: $scope.user
 
       });
+    } */
 
-  }]);
+    }]);
