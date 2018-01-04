@@ -14,18 +14,18 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12">  
+      <div class="col-md-12">
         <form name="myform">
           <div class="form-group">
             <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="name"> 
+            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="name">
           </div>
           <div class="form-group">
-            <label for="surname">{{ 'SURNAME' | translate }} :</label>  
-            <input ng-model="user.surnname" ng-required="true" type="text" class="form-control" id="surname"> 
+            <label for="surname">{{ 'SURNAME' | translate }} :</label>
+            <input ng-model="user.surnname" ng-required="true" type="text" class="form-control" id="surname">
           </div>
           <div class="form-group">
-            <label for="username">{{ 'USERNAME' | translate }}  :</label>
+            <label for="username">{{ 'USERNAME' | translate }} :</label>
             <input ng-model="user.username" nng-required="true" type="text" class="form-control" id="username">
           </div>
           <div class="form-group">
@@ -33,42 +33,47 @@
             <input ng-model="user.password" ng-required="true" type="password" class="form-control" id="pwd">
           </div>
           <div class="form-group">
-            <label for="email">  Email :</label>
+            <label for="email"> Email :</label>
             <input ng-model="user.email" ng-required="true" type="email" class="form-control" id="email">
           </div>
           <div class="form-group">
             <label for="address">{{ 'ADDRESS' | translate }}:</label>
             <input ng-model="user.address" ng-required="true" type="text" class="form-control" id="address">
           </div>
+
+       
+
           <div class="form-group">
             <label for="companyinfo">{{ 'COM_INFO' | translate }}:</label>
             <input ng-model="user.companyinfo" ng-required="true" type="text" class="form-control" id="companyinfo">
-          </div> 
+          </div>
           <div class="form-group">
-              <label for="picture">{{ 'PICTURE' | translate }}  :</label>
+            <label for="picture">{{ 'PICTURE' | translate }} :</label>
             <div class="input-group image-preview">
-                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                <span class="input-group-btn">
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span>{{ 'CLEAR' | translate }}  
-                    </button>
-                    <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">{{ 'BROWSE' | translate }} </span>
-                        <input ng-model="user.inputfilepreview"   type="file" accept="image/png, image/jpeg, image/gif" name="inputfilepreview"/> <!-- rename it -->
-                    </div>
-                </span>
+              <input type="text" class="form-control image-preview-filename" disabled="disabled">
+              <!-- don't give a name === doesn't send on POST/GET -->
+              <span class="input-group-btn">
+                <!-- image-preview-clear button -->
+                <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                  <span class="glyphicon glyphicon-remove"></span>{{ 'CLEAR' | translate }}
+                </button>
+                <!-- image-preview-input -->
+                <div class="btn btn-default image-preview-input">
+                  <span class="glyphicon glyphicon-folder-open"></span>
+                  <span class="image-preview-input-title">{{ 'BROWSE' | translate }} </span>
+                  <input ng-model="user.inputfilepreview" type="file" accept="image/png, image/jpeg, image/gif" name="inputfilepreview" />
+                  <!-- rename it -->
+                </div>
+              </span>
             </div>
           </div>
           <div class="checkbox">
             <label>
-              <input ng-model="user.rememberlogin" name="rememberlogin" type="checkbox">{{ 'REMEMBER' | translate }}  </label>
-          </div> 
+              <input ng-model="user.rememberlogin" name="rememberlogin" type="checkbox">{{ 'REMEMBER' | translate }} </label>
+          </div>
 
-          <button  ng-click="myform.$valid && register()" class="btn btn-primary btn-lg">{{ 'REGISTER' | translate }}  </button>
- 
+          <button ng-click="myform.$valid && register()" class="btn btn-primary btn-lg">{{ 'REGISTER' | translate }} </button>
+
         </form>
       </div>
     </div>

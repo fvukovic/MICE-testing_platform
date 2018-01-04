@@ -1,5 +1,22 @@
 'use strict';
 
+angular.module('myApp.directives', [])
+  .directive('pwCheck', [function () {
+    return {
+      require: 'ngModel',
+      link: function (scope, elem, attrs, ctrl) {
+        var firstPassword = '#' + attrs.pwCheck;
+        elem.add(firstPassword).on('keyup', function () {
+          scope.$apply(function () {
+            var v = elem.val()===$(firstPassword).val();
+            ctrl.$setValidity('pwmatch', v);
+          });
+        });
+      }
+    }
+  }]);
+
+
 angular.module('myApp.register', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
@@ -8,6 +25,8 @@ angular.module('myApp.register', ['ngRoute'])
             controller: 'RegisterCtrl'
         });
     }])
+
+    
 
     .controller('RegisterCtrl', function ($scope, $http) {
         $scope.fili = { "username": "filip" };
