@@ -10,18 +10,18 @@ app.config(['$routeProvider', function ($routeProvider, $scope) {
 }])
 
 app.controller('MenuCtrl', function ($scope, $http, $translate) {
-  $scope.user={
-    usernmae:"",
-    password:"",
+  $scope.user = {
+    username: "",
+    password: "",
   }
   alert(window.localStorage.getItem("user"));
-  if(window.localStorage.getItem("user")==1){
-    $scope.logg=false; 
-    $scope.register="/registration" 
-    $scope.username= window.localStorage.getItem("username")
-  }else{
-     $scope.logg=true;
-    $scope.register="/register"
+  if (window.localStorage.getItem("user") == 1) {
+    $scope.logg = false;
+    $scope.register = "/registration"
+    $scope.username = window.localStorage.getItem("username")
+  } else {
+    $scope.logg = true;
+    $scope.register = "/register"
   }
 
 
@@ -37,25 +37,26 @@ app.controller('MenuCtrl', function ($scope, $http, $translate) {
 
   });
 
-  $scope.logout= function(){ 
+  $scope.logout = function () {
     window.localStorage.removeItem("user");
     window.location.reload();
   }
 
-  $scope.login = function () {  alert($scope.user.password);
+  $scope.login = function () {
+    alert($scope.user.password);
     var request = $http({
       method: "post",
       url: 'http://localhost:3000/login',
-      data:  $scope.user
+      data: $scope.user
 
     });
     request.success(function (data) {
       console.log(data);
       if (data.status == 1) {
         alert("Uspjesno ste prijavili");
-        window.localStorage.setItem("user",1)
+        window.localStorage.setItem("user", 1)
         window.location.reload();
-        window.localStorage.setItem("username",$scope.user.username); 
+        window.localStorage.setItem("username", $scope.user.username);
       } else {
         alert("lose jaro ");
       }
@@ -75,7 +76,7 @@ app.controller('MenuCtrl', function ($scope, $http, $translate) {
 
   $scope.externalLink = function (externalHtml) {
     window.localStorage.setItem("externalHtml", JSON.stringify(externalHtml));
-  } 
+  }
   if (window.localStorage.getItem("language") == null) {
     window.localStorage.setItem("language", "en")
     $scope.language = "en";
@@ -95,7 +96,7 @@ app.controller('MenuCtrl', function ($scope, $http, $translate) {
     $scope.language = "hr";
   }
   $scope.change = function (language) {
-    $translate.use(language); 
+    $translate.use(language);
     if (language == "en") {
       language = "us"
       window.localStorage.setItem("language", "en");
@@ -109,6 +110,6 @@ app.controller('MenuCtrl', function ($scope, $http, $translate) {
     $("#flag").removeClass();
     $("#flag").addClass("flag");
     $("#flag").addClass("flag-" + language);
-     
-  } 
+
+  }
 });
