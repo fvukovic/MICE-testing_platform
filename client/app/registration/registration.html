@@ -88,67 +88,13 @@
                           40
                         </td>
                         <td>
-                          <input class="form-control" id="quantity{{key['_id']}}" type="number" ng-click="addToCard()"  />
+                          <input class="form-control" id="quantity{{key['_id']}}" type="number" min="0" ng-click="addToCard()"  />
                         </td>
                         <td>
                           <input class="form-control" type="checkbox" id="checkbox{{key['_id']}}" ng-click="addToCard()">
                         </td>
                       </tr>
-
-                      <tr class="cart_table_item">
-                        <td class="product-name">
-                          <a class="toggle-title">
-                            VIP  {{ 'TICKET' | translate }}
-                          </a>
-                          <div class="toggle-details">
-                            <table class="table table-border-none">
-                              <thead>
-                                <tr>
-                                  <th>Name:</th>
-                                  <th>Surname:</th>
-                                  <th>Email</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <input class="form-control" type="text" name="name3" id="name3{{key['_id']}}" />
-                                  </td>
-                                  <td>
-                                    <input class="form-control" type="text" name="surname3" id="surname3{{key['_id']}}" />
-                                  </td>
-                                  <td>
-                                    <input class="form-control" type="text" name="email3" id="email3{{key['_id']}}" />
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <input class="form-control" type="text" name="name4" id="name4{{key['_id']}}" />
-                                  </td>
-                                  <td>
-                                    <input class="form-control" type="text" name="surname4" id="surname4{{key['_id']}}" />
-                                  </td>
-                                  <td>
-                                    <input class="form-control" type="text" name="email4" id="email4{{key['_id']}}" />
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </td>
-                        <td>
-                          30 €
-                        </td>
-                        <td>
-                          40
-                        </td>
-                        <td>
-                          <input class="form-control" type="number" />
-                        </td>
-                        <td>
-                          <input class="form-control" type="checkbox">
-                        </td>
-                      </tr>
+                 
                     </tbody>
                   </table>
                 </form>

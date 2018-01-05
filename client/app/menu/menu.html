@@ -139,6 +139,7 @@
                     <ul class="nav nav-pills" id="mainNav">
                         <li ng-repeat="MenuFirstLevel in menu.menu" class="dropdown">
                             <a href="#!/indeks" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}" ng-click='externalLink(MenuFirstLevel["html"])'>
+                               
                                 {{MenuFirstLevel["label"][language]}}
                             </a>
                             <ul ng-repeat="MenuSecondLevel in MenuFirstLevel.nodes" class="dropdown-menu">
@@ -148,13 +149,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#!{{register}}"> {{'REG_INFO' | translate }}</a>
+                            <a href="#!{{register}}"> {{'REG_INFO' | translate }}(static)</a>
                         </li>
                         <li>
-                            <a href="#!/abstracts"> {{'ABSTRACT' | translate }}</a>
+                            <a href="#!/abstracts"> {{'ABSTRACT' | translate }}(static)</a>
                         </li>
                         <li>
-                            <a href="#!/events"> {{'LECTURES' | translate }}</a>
+                            <a href="#!/events"> {{'LECTURES' | translate }}(static)</a>
                         </li>
                     </ul>
 

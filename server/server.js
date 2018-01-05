@@ -5,7 +5,7 @@ var morgan = require("morgan");
 var app = express();
 var config = require("./config");
 var mongodb = require("mongodb")
-var db;
+var db = require("./db");
 var passwordHash = require('password-hash');
 var cors = require('cors');
 var router = express.Router();
@@ -15,33 +15,32 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-var url = "mongodb://localhost:27017/mice"
-var MongoClient = mongodb.MongoClient;
-MongoClient.connect(url, function (err, dba) {
-    if (err) {
-        console.log(err);
-    }
-    else {
-        db = dba;
-        console.log("Connected")
-    }
+
+//Baza
+db.init(function (error) {
+    if (error)
+        throw error;
+
+    app.listen(3001);
 });
 
+//node server
+app.listen(config.port, function (err) {
 
 
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("Listening on port " + config.port)
+    }
+})
+
+
+
+//rute treba odvojit u fajlove!!
 app.get("/menu", function (req, res, next) {
     var response = [];
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    var collection = db.collection("conferencemenu");
-    collection.find({}).toArray(function (err, result) {
+    db.conferencemenu.find({}).toArray(function (err, result) {
         if (err) {
             console.log(err);
         } else {
@@ -52,76 +51,58 @@ app.get("/menu", function (req, res, next) {
         }
     })
 });
-    app.post("/register", function (req, res, next) {
-        var request = req.body;
+app.post("/register", function (req, res, next) {
 
-        var succes_msg = {
-            username: 1,
-            email: 1,
-            status: 1,
-        };
+    var request = req.body;
+    var succes_msg = {
+        username: 1,
+        email: 1,
+        status: 1,
+    };
 
+    db.conference_user.findOne({ "username": req.body.username }, function (err, result) {
+        if (err) throw err;
+        console.log(req.body.username);
+        if (result == null) {
+            console.log("ne postoji");
+        } else {
+            console.log("postoji");
+            succes_msg.username = 0;
+            succes_msg.status = 0;
+        }
+    });
 
-        
-
-        db.collection("user").findOne({ "username": req.body.username }, function (err, result) {
-            if (err) throw err;
-            console.log(req.body.username);
-            if (result == null) {
-                console.log("ne postoji");
-            } else {
-                console.log("postoji");
-                succes_msg.username = 0;
-                succes_msg.status = 0;
-            }
-        });
-
-        db.collection("user").findOne({ "email": req.body.email }, function (err, result) {
-            console.log(req.body.email);
-
-            if (err) throw err;
-            if (result == null) {
-                console.log("ne postoji");
-            } else {
-                console.log("postoji");
-                succes_msg.status = 0;
-                succes_msg.email = 0;
-            }
-            res.send(succes_msg);
-            if (succes_msg.status == 1) {
-                request.password = passwordHash.generate(req.body.password)
-                db.collection("conference_user").insertOne(request, function (err, res) {
-                    if (err) throw err;
-                    console.log("1 document inserted");
-                });
-            }
-        });
-      
-       
-
+    db.conference_user.findOne({ "email": req.body.email }, function (err, result) {
+        if (err) throw err;
+        if (result == null) {
+            console.log("ne postoji");
+        } else {
+            console.log("postoji");
+            succes_msg.status = 0;
+            succes_msg.email = 0;
+        }
+        res.send(succes_msg);
+        if (succes_msg.status == 1) {
+            request.password = passwordHash.generate(req.body.password)
+            db.conference_user.insertOne(request, function (err, res) {
+                if (err) throw err;
+                console.log("1 document inserted");
+            });
+        }
     });
 
 
 
+});
+ 
 app.get("/products", function (req, res, next) {
-    var response = [];
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    var collection = db.collection("product");
-    collection.find({}).toArray(function (err, result) {
+    db.product.find({}).toArray(function (err, result) {
         res.send(result)
         if (err) {
             console.log(err);
         } else {
             for (var x = 0; x < result.length; x++) {
-                 
+
 
             }
         }
@@ -134,21 +115,21 @@ app.post("/login", function (req, res, next) {
         username: 1,
         password: 1,
         status: 0,
-    }; 
+    };
 
-    db.collection("user").findOne({ "username": req.body.username }, function (err, result) {
+    db.conference_user.findOne({ "username": req.body.username }, function (err, result) {
         if (err) throw err;
         console.log(req.body.username);
         if (result == null) {
             console.log("ne postoji");
-            succes_msg.username = 0; 
+            succes_msg.username = 0;
             res.send(succes_msg);
-        } else { 
-            if ( passwordHash.verify(req.body.password, result.password)) {
+        } else {
+            if (passwordHash.verify(req.body.password, result.password)) {
                 succes_msg.status = 1;
                 res.send(succes_msg);
-            }else{
-                succes_msg.password = 0;    
+            } else {
+                succes_msg.password = 0;
                 res.send(succes_msg);
             }
         }
@@ -160,12 +141,3 @@ app.post("/login", function (req, res, next) {
 
 
 
-app.listen(config.port, function (err) {
-
-
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("Listening on port " + config.port)
-    }
-}) 
