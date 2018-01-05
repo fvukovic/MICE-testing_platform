@@ -51,7 +51,7 @@ app.get("/menu", function (req, res, next) {
             }
         }
     })
-
+});
     app.post("/register", function (req, res, next) {
         var request = req.body;
 
@@ -61,6 +61,9 @@ app.get("/menu", function (req, res, next) {
             status: 1,
         };
 
+
+        
+
         db.collection("user").findOne({ "username": req.body.username }, function (err, result) {
             if (err) throw err;
             console.log(req.body.username);
@@ -68,7 +71,7 @@ app.get("/menu", function (req, res, next) {
                 console.log("ne postoji");
             } else {
                 console.log("postoji");
-                succes_msg.username = 1;
+                succes_msg.username = 0;
                 succes_msg.status = 0;
             }
         });
@@ -82,22 +85,49 @@ app.get("/menu", function (req, res, next) {
             } else {
                 console.log("postoji");
                 succes_msg.status = 0;
-                succes_msg.email = 1;
+                succes_msg.email = 0;
             }
-
+            res.send(succes_msg);
+            if (succes_msg.status == 1) {
+                request.password = passwordHash.generate(req.body.password)
+                db.collection("conference_user").insertOne(request, function (err, res) {
+                    if (err) throw err;
+                    console.log("1 document inserted");
+                });
+            }
         });
-        res.send(succes_msg);
-        if (succes_msg.status == 1) {
-            request.password = passwordHash.generate(req.body.password)
-            db.collection("user").insertOne(request, function (err, res) {
-                if (err) throw err;
-                console.log("1 document inserted");
-            });
-        }
+      
+       
 
     });
 
+
+
+app.get("/products", function (req, res, next) {
+    var response = [];
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    var collection = db.collection("product");
+    collection.find({}).toArray(function (err, result) {
+        res.send(result)
+        if (err) {
+            console.log(err);
+        } else {
+            for (var x = 0; x < result.length; x++) {
+                 
+
+            }
+        }
+    })
 });
+
 
 app.post("/login", function (req, res, next) {
     var succes_msg = {

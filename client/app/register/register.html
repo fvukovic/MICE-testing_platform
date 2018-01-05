@@ -27,31 +27,34 @@
           <div class="form-group">
             <label for="username">{{ 'USERNAME' | translate }} :</label>
             <input ng-model="user.username" nng-required="true" type="text" class="form-control" id="username">
-          </div> 
+            <span id="error_username" style="color:red;margin-top:20px"></span>
+          </div>
 
           <div class="form-group">
-            <label for="pwd">{{ 'PASSWORD' | translate }} :</label> 
-              
+            <label for="pwd">{{ 'PASSWORD' | translate }} :</label>
+
             <input ng-model="user.password" ng-required="true" type="password" class="form-control" ng-model="formData.password" id="pwd">
           </div>
 
           <div class="form-group">
             <label for="pwd">{{ 'PASSWORD' | translate }} :</label>
-            <input ng-model="user.confpassword" ng-required="true" type="password" class="form-control" ng-model="formData.confirmPassword" ng-pattern="formData.password" id="pwd">
-            <span  style="color:red;margin-top:20px" ng-show="user.password != user.confpassword && user.password!=''">Your passwords must match.</span>
-           
-          </div> 
+            <input ng-model="user.confpassword" ng-required="true" type="password" class="form-control" ng-model="formData.confirmPassword"
+              ng-pattern="formData.password" id="pwd">
+            <span style="color:red;margin-top:20px" ng-show="user.password != user.confpassword && user.password!=''">Your passwords must match.</span>
+
+          </div>
 
           <div class="form-group">
             <label for="email"> Email :</label>
             <input ng-model="user.email" ng-required="true" type="email" class="form-control" id="email">
+            <span id="error_email" style="color:red;margin-top:20px"></span>
           </div>
           <div class="form-group">
             <label for="address">{{ 'ADDRESS' | translate }}:</label>
             <input ng-model="user.address" ng-required="true" type="text" class="form-control" id="address">
           </div>
- 
-               
+
+
           <div class="form-group">
             <label for="companyinfo">{{ 'COM_INFO' | translate }}:</label>
             <input ng-model="user.companyinfo" ng-required="true" type="text" class="form-control" id="companyinfo">
@@ -76,12 +79,9 @@
               </span>
             </div>
           </div>
-          <div class="checkbox">
-            <label>
-              <input ng-model="user.rememberlogin" name="rememberlogin" type="checkbox">{{ 'REMEMBER' | translate }} </label>
-          </div>
 
-          <button ng-disabled="user.password != user.confpassword || user.username=='' || user.email==''" ng-click="myform.$valid && register()" class="btn btn-primary btn-lg">{{ 'REGISTER' | translate }} </button>
+          <button ng-disabled="user.password != user.confpassword || user.username=='' || user.email==''" ng-click="myform.$valid && register()"
+            class="btn btn-primary btn-lg">{{ 'REGISTER' | translate }} </button>
 
         </form>
       </div>

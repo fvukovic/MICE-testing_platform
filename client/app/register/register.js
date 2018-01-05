@@ -1,21 +1,6 @@
 'use strict';
 
-angular.module('myApp.directives', [])
-  .directive('pwCheck', [function () {
-    return {
-      require: 'ngModel',
-      link: function (scope, elem, attrs, ctrl) {
-        var firstPassword = '#' + attrs.pwCheck;
-        elem.add(firstPassword).on('keyup', function () {
-          scope.$apply(function () {
-            var v = elem.val()===$(firstPassword).val();
-            ctrl.$setValidity('pwmatch', v);
-          });
-        });
-      }
-    }
-  }]);
-
+ 
 
 angular.module('myApp.register', ['ngRoute'])
 
@@ -28,7 +13,10 @@ angular.module('myApp.register', ['ngRoute'])
 
     
 
-    .controller('RegisterCtrl', function ($scope, $http) {
+    .controller('RegisterCtrl', function ($scope, $http,$location) {
+        if(window.localStorage.getItem("user")==1){
+            $location.path('/registration')
+        }
         $scope.fili = { "username": "filip" };
         $scope.getNumber = function (num) {
             return new Array(num);
@@ -54,11 +42,22 @@ angular.module('myApp.register', ['ngRoute'])
             });
             request.success(function (data) {
                 console.log(data);
-                if (data.status == 1) {
-                    alert("Uspjesno ste registrirali");
+                if (data.status == 1) { 
+                    window.localStorage.setItem("username",$scope.user.username);
                     window.localStorage.setItem("user","1");
+                    window.location.reload();
+                    $location.path('/registration')
+
                 } else {
-                    alert("Losa registracija");
+                    if(data.username==0){
+                        $("#error_username").text("Username already exist!")  
+                    }else
+                    {
+                        $("#error_username").text("")     
+                    }
+                    if(data.email==0){
+                        $("#error_email").text("This E-mail is already used!");
+                    }
                 }
  
 

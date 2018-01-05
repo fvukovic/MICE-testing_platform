@@ -52,6 +52,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     "DINNING": "Fine dining",
     "KEEP": "keep me logged-in",
     "NEW": "New here",
+    "LOGOUT" : "Log out",
 
 
     //ABSTRACT
@@ -189,6 +190,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     "DINNING": "Fina jela",
     "KEEP": "Ostani prijavljen",
     "NEW": "Novi ovdje",
+    "LOGOUT" : "Odjava",
 
     //ABSTRACT
 

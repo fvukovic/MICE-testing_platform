@@ -1,4 +1,4 @@
-<div class="entry">
+<div class="entry" ng-init="trustedHtml()">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -40,10 +40,10 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="cart_table_item">
-                        <td class="product-name">
-                          <a class="toggle-title">{{ 'STANDARD' | translate }}
-                            Standard ticket
+                      <tr ng-repeat="key in products" class="cart_table_item">
+                        <td  class="product-name">
+                          <a class="toggle-title"> 
+                            {{key["name"][language]}}   
                           </a>
                           <div class="toggle-details">
                             <table class="table table-border-none">
@@ -57,41 +57,41 @@
                               <tbody>
                                 <tr>
                                   <td>
-                                    <input class="form-control" type="text" name="name1" id="name1" />
+                                    <input class="form-control" type="text" name="name1" id="name1{{key['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="suername1" id="suername1" />
+                                    <input class="form-control" type="text" name="suername1" id="suername1{{key['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="email1" id="email1" />
+                                    <input class="form-control" type="text" name="email1" id="email1{{key['_id']}}" />
                                   </td>
                                 </tr>
                                 <tr>
                                   <td>
-                                    <input class="form-control" type="text" name="name" id="name" />
+                                    <input class="form-control" type="text" name="name" id="name{{key['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="surname" id="surname" />
+                                    <input class="form-control" type="text" name="surname" id="surname{{key['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="email" id="email" />
+                                    <input class="form-control" type="text" name="email" id="email{{key['_id']}}" />
                                   </td>
                                 </tr>
                               </tbody>
                             </table>
                           </div>
                         </td>
-                        <td>
+                        <td id="price{{key['_id']}}">
                           30 €
                         </td>
                         <td>
                           40
                         </td>
                         <td>
-                          <input class="form-control" type="number" />
+                          <input class="form-control" id="quantity{{key['_id']}}" type="number" ng-click="addToCard()"  />
                         </td>
                         <td>
-                          <input class="form-control" type="checkbox">
+                          <input class="form-control" type="checkbox" id="checkbox{{key['_id']}}" ng-click="addToCard()">
                         </td>
                       </tr>
 
@@ -112,24 +112,24 @@
                               <tbody>
                                 <tr>
                                   <td>
-                                    <input class="form-control" type="text" name="name3" id="name3" />
+                                    <input class="form-control" type="text" name="name3" id="name3{{key['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="surname3" id="surname3" />
+                                    <input class="form-control" type="text" name="surname3" id="surname3{{key['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="email3" id="email3" />
+                                    <input class="form-control" type="text" name="email3" id="email3{{key['_id']}}" />
                                   </td>
                                 </tr>
                                 <tr>
                                   <td>
-                                    <input class="form-control" type="text" name="name4" id="name4" />
+                                    <input class="form-control" type="text" name="name4" id="name4{{key['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="surname4" id="surname4" />
+                                    <input class="form-control" type="text" name="surname4" id="surname4{{key['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="email4" id="email4" />
+                                    <input class="form-control" type="text" name="email4" id="email4{{key['_id']}}" />
                                   </td>
                                 </tr>
                               </tbody>
@@ -172,7 +172,7 @@
                       </th>
                       <td>
                         <strong>
-                          <span class="amount">100 €</span>
+                          <span class="amount">{{cost}} €</span>
                         </strong>
                       </td>
                     </tr>
@@ -192,7 +192,7 @@
                       </th>
                       <td>
                         <strong>
-                          <span class="amount">125 €</span>
+                          <span class="amount">{{cost}} €</span>
                         </strong>
                       </td>
                     </tr>
