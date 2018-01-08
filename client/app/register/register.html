@@ -61,7 +61,7 @@
           </div>
           <div id="date_of_birth" class="form-group">
             <label for="date_of_birth"> {{ 'date_of_birth' | translate }} :</label>
-            <input id="date_of_birth "  ng-model="user.date_of_birth "   type="text" class="form-control" >
+            <input id="date_of_birth "  ng-model="user.date_of_birth "   type="date" class="form-control" >
           </div>
           <div   id="email" class="form-group">
             <label for="email"> {{ 'email' | translate }} :</label>
@@ -69,7 +69,10 @@
           </div>
           <div id="gender" class="form-group">
             <label for="gender"> {{ 'gender' | translate }} :</label>
-            <input id="gender " ng-model="user.gender "   type="text" class="form-control" >
+            <select id="gender " class="form-control" ng-model="user.gender ">
+              <option value="M">{{ 'gender_male' | translate }}</option>
+              <option value="F">{{ 'gender_female' | translate }}</option>
+            </select>
           </div>
           <div id="mobile" class="form-group">
             <label for="mobile"> {{ 'mobile' | translate }} :</label>
@@ -112,7 +115,7 @@
 
           <div ng-repeat="key in inputs" id="vat_pin" class="form-group">
             <label for="{{ key._id }}"> {{ key.label[language] }} :</label>
-            <input class="additional"  id="add{{key._id }}"  type="text" ng-required="testRequirements(key.option)" class="form-control" >
+            <input class="additional form-control"  id="add{{key._id }}"  type="text" ng-required="testRequirements(key.option)" class="form-control" >
           </div>
 
           <button  ng-click="myform.$valid && register()"
