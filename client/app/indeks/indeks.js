@@ -5,7 +5,8 @@ angular.module('myApp.indeks', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/indeks', {
     templateUrl: 'indeks/indeks.html',
-    controller: 'IndeksCtrl'
+    controller: 'IndeksCtrl',
+    
   });
 }])
 

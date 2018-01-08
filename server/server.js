@@ -38,19 +38,44 @@ app.listen(config.port, function (err) {
 
 
 //rute treba odvojit u fajlove!!
-app.get("/menu", function (req, res, next) {
-    var response = [];
-    db.conferencemenu.find({}).toArray(function (err, result) {
+app.post("/menu", function (req, res, next) {
+    var response = []; 
+    db.conference.findOne({"web_address": req.body.conference_name }, function (err, result) {
         if (err) {
             console.log(err);
-        } else {
-            for (var x = 0; x < result.length; x++) {
-                (res.send(result[x]));
-
+        } else {  
+            if(result==null){
+                res.send({"status":0}); 
+                return;
             }
+            db.conferencemenu.find({"conference_id": result._id}).toArray(function (err, result) {
+                if (err) {
+                    console.log(err);
+                } else { 
+                        res.send(result[0]); 
+                }
+            })
         }
     })
+
+  
 });
+
+app.post("/conference", function (req, res, next) {
+    var response = []; 
+    db.conference.findOne({"web_address": req.body.conference_name }, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {  
+            res.send(result);
+        }
+
+  
+});
+
+   
+});
+
 app.post("/register", function (req, res, next) {
 
     var request = req.body;
@@ -96,8 +121,27 @@ app.post("/register", function (req, res, next) {
 });
  
 app.get("/products", function (req, res, next) {
+    var response = [];
     db.product.find({}).toArray(function (err, result) {
-        res.send(result)
+        db.tax.find({}).toArray(function (err2, result2) {
+
+            console.log("OVOO:"+result2.length);
+                for(var x=0;x<result.length;x++){
+                    for(var y=0;y<result2.length;y++){ 
+                        console.log(result[x].tax  +"    "+result2[y]["_id"]);
+                        console.log(result[x].tax==result2[y]["_id"]);
+                        if(result[x].tax.equals(result2[y]["_id"])){
+                             response.push({
+                                 "product":result[x],
+                                 "tax":result2[y].name,
+                             });
+                        }    
+                    }
+                    
+                }
+                res.send(response);   
+        });
+       
         if (err) {
             console.log(err);
         } else {
@@ -108,6 +152,7 @@ app.get("/products", function (req, res, next) {
         }
     })
 });
+
 
 
 app.post("/login", function (req, res, next) {

@@ -1,6 +1,6 @@
 <header id="header" data-ng-controller="MenuCtrl" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 140, "stickySetTop": "-140px"}'>
     <div class="header-body">
-        <div class="header-top">
+        <div class="header-top"> 
             <div class="container">
                 <nav class="header-nav-top">
                     <ul class="nav nav-pills">
@@ -138,18 +138,18 @@
                 <nav>
                     <ul class="nav nav-pills" id="mainNav">
                         <li ng-repeat="MenuFirstLevel in menu.menu" class="dropdown">
-                            <a href="#!/indeks" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}" ng-click='externalLink(MenuFirstLevel["html"])'>
+                            <a href="#/mice/{{name}}{{MenuFirstLevel['address']}}" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}"  >
                                
                                 {{MenuFirstLevel["label"][language]}}
                             </a>
                             <ul ng-repeat="MenuSecondLevel in MenuFirstLevel.nodes" class="dropdown-menu">
                                 <li>
-                                    <a href="#!/indeks" ng-click='externalLink(MenuSecondLevel["html"])'> {{MenuSecondLevel["label"][language]}}</a>
+                                    <a href="#/mice/{{name}}{{MenuSecondLevel['address']}}" > {{MenuSecondLevel["label"][language]}}</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#!{{register}}"> {{'REG_INFO' | translate }}(static)</a>
+                            <a href="#/mice/{{name}}{{register}}"> {{'REG_INFO' | translate }}(static)</a>
                         </li>
                         <li>
                             <a href="#!/abstracts"> {{'ABSTRACT' | translate }}(static)</a>

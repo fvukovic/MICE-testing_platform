@@ -12,9 +12,9 @@ angular.module('myApp.registration', ['ngRoute'])
  
   .controller('RegistrationCtrl', function ($scope, $http, $rootScope,$translate, $location) {
     $scope.language = window.localStorage.getItem("language");
-    $scope.cost="";
+    $scope.cost=0;
     if(window.localStorage.getItem("user")==0){
-      $location.path('/register')
+      $location.path('/register');
   }
     var request = $http({
       method: "GET",
@@ -23,9 +23,8 @@ angular.module('myApp.registration', ['ngRoute'])
   
     });
     request.success(function (data) {
-      $scope.products = data;
+      $scope.products = data; 
       console.log(data);
-  
     });
 
 $scope.addToCard = function(){

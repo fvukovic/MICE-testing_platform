@@ -2,6 +2,7 @@
 
 // Declare app level module which depends on views, and components
 var app = angular.module('myApp', [
+  'ngSanitize',
   'ngRoute',
   'myApp.home',
   'myApp.register',
@@ -14,13 +15,98 @@ var app = angular.module('myApp', [
   'myApp.view2',
   'myApp.indeks',
   'myApp.version',
-  'pascalprecht.translate'
+  'pascalprecht.translate',
+  'ngSanitize'
 ]).
   config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
-    $locationProvider.hashPrefix('!');
 
-    $routeProvider.otherwise({ redirectTo: '/home' });
+    $routeProvider.when('/mice/:idConference', {
+      templateUrl: 'menu/empty.html',
+      controller: 'RouteController'
+    });
+
+    $routeProvider.when('/mice/:idConference/:address', {
+      templateUrl: 'indeks/indeks.html',
+      controller: 'NextRouteController'
+    });
+
   }]);
+
+app.controller('NextRouteController', function ($scope, $routeParams, $http, $location,$translate,$sce) { 
+  $scope.html="";
+  var pageExist=false;
+  console.log("NextRouterController");
+  var request = $http({
+    method: "POST",
+    url: 'http://localhost:3000/menu',
+    data: { conference_name: $routeParams.idConference },
+
+  });
+  request.success(function (data) {
+    if(data.status==0){
+      return;
+    }
+
+
+    $scope.trustedHtml = function () { 
+      
+         return   $sce.trustAsHtml($scope.html); 
+       
+    }
+   
+  
+
+    alert($routeParams.idConference);
+    window.localStorage.setItem("conference", $routeParams.idConference);
+    console.log(data.menu.length);
+    for(var x=0;x<data.menu.length;x++){ 
+      console.log(data.menu[x].address.substring(1)+ "=="+$routeParams.address);
+      if(data.menu[x].address.substring(1)==+$routeParams.address){ 
+         $scope.html= $sce.trustAsHtml( data.menu[x].html["en"])  ;
+         pageExist=true; 
+      }
+      for(var y=0;y<data.menu[x].nodes.length;y++){
+         if(data.menu[x].nodes[y].address.substring(1)==$routeParams.address){ 
+           $scope.html=   $sce.trustAsHtml( data.menu[x].nodes[y].html[$translate.use()]);  ;
+         }
+      }
+    }
+    if($routeParams.address=="_" && pageExist==false){
+      $scope.html=data.menu[0].html;
+      $scope.html = $sce.trustAsHtml( data.menu[0].html[$translate.use()]);  ;
+      console.log("pocetna");
+    }
+
+  });
+
+});
+
+app.controller('RouteController', function ($scope, $routeParams, $http, $location) {
+  
+  console.log("RputeController");
+  var request = $http({
+    method: "POST",
+    url: 'http://localhost:3000/menu',
+    data: { conference_name: $routeParams.idConference },
+
+  });
+  request.success(function (data) {
+    console.log(data);
+    if(data.status==0){
+      return;
+    }
+    window.localStorage.setItem("conference", $routeParams.idConference) 
+    if(data.menu[0].address=="/"){
+      $location.path('/mice/' + $routeParams.idConference + data.menu[0].address+"_");
+    }else{
+      $location.path('/mice/' + $routeParams.idConference + data.menu[0].address);
+    }
+    
+  });
+
+});
+
+
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('en', {
     'HAVE_ACC': 'Already have an account',
@@ -52,7 +138,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     "DINNING": "Fine dining",
     "KEEP": "keep me logged-in",
     "NEW": "New here",
-    "LOGOUT" : "Log out",
+    "LOGOUT": "Log out",
 
 
     //ABSTRACT
@@ -190,7 +276,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     "DINNING": "Fina jela",
     "KEEP": "Ostani prijavljen",
     "NEW": "Novi ovdje",
-    "LOGOUT" : "Odjava",
+    "LOGOUT": "Odjava",
 
     //ABSTRACT
 

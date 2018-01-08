@@ -1,3 +1,7 @@
+
+
+  <div ng-include="'menu/menu.html'"></div>
+
 <div class="entry" ng-init="trustedHtml()">
   <div class="container">
     <div class="row">
@@ -37,13 +41,17 @@
                         <th>{{ 'ADOTO' | translate }}
                        
                         </th>
+
+                        <th>{{ 'TAX' | translate }}
+                       
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr ng-repeat="key in products" class="cart_table_item">
                         <td  class="product-name">
                           <a class="toggle-title"> 
-                            {{key["name"][language]}}   
+                            {{key['product']  ["name"][language]}}   
                           </a>
                           <div class="toggle-details">
                             <table class="table table-border-none">
@@ -57,41 +65,44 @@
                               <tbody>
                                 <tr>
                                   <td>
-                                    <input class="form-control" type="text" name="name1" id="name1{{key['_id']}}" />
+                                    <input class="form-control" type="text" name="name1" id="name1{{key['product']['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="suername1" id="suername1{{key['_id']}}" />
+                                    <input class="form-control" type="text" name="suername1" id="suername1{{key['product']['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="email1" id="email1{{key['_id']}}" />
+                                    <input class="form-control" type="text" name="email1" id="email1{{key['product']['_id']}}" />
                                   </td>
                                 </tr>
                                 <tr>
                                   <td>
-                                    <input class="form-control" type="text" name="name" id="name{{key['_id']}}" />
+                                    <input class="form-control" type="text" name="name" id="name{{key['product']['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="surname" id="surname{{key['_id']}}" />
+                                    <input class="form-control" type="text" name="surname" id="surname{{key['product']['_id']}}" />
                                   </td>
                                   <td>
-                                    <input class="form-control" type="text" name="email" id="email{{key['_id']}}" />
+                                    <input class="form-control" type="text" name="email" id="email{{key['product']['_id']}}" />
                                   </td>
                                 </tr>
                               </tbody>
                             </table>
                           </div>
                         </td>
-                        <td id="price{{key['_id']}}">
+                        <td id="price{{key['product']['_id']}}">
                           30 €
                         </td>
                         <td>
                           40
                         </td>
                         <td>
-                          <input class="form-control" id="quantity{{key['_id']}}" type="number" min="0" ng-click="addToCard()"  />
+                         {{key["tax"]}}
                         </td>
                         <td>
-                          <input class="form-control" type="checkbox" id="checkbox{{key['_id']}}" ng-click="addToCard()">
+                          <input class="form-control" id="quantity{{key['product']['_id']}}" type="number" min="0" ng-click="addToCard()"  />
+                        </td>
+                        <td>
+                          <input class="form-control" type="checkbox" id="checkbox{{key['product']['_id']}}" ng-click="addToCard()">
                         </td>
                       </tr>
                  

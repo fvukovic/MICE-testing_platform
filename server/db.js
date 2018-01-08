@@ -10,6 +10,8 @@ module.exports.init = function (callback) {
     module.exports.conferencemenu = client.collection("conferencemenu"); 
     module.exports.product = client.collection("product"); 
     module.exports.conference_user = client.collection("conference_user"); 
+    module.exports.tax = client.collection("tax");   
+    module.exports.conference = client.collection("conference");  
     callback(error);
   });
 };

@@ -5,7 +5,7 @@
 angular.module('myApp.register', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/register', {
+        $routeProvider.when('/mice/:idConference/register', {
             templateUrl: 'register/register.html',
             controller: 'RegisterCtrl'
         });
@@ -13,11 +13,86 @@ angular.module('myApp.register', ['ngRoute'])
 
     
 
-    .controller('RegisterCtrl', function ($scope, $http,$location) {
+    .controller('RegisterCtrl', function ($scope, $http,$location,$routeParams) {
         if(window.localStorage.getItem("user")==1){
             $location.path('/registration')
+        } 
+
+        console.log("RputeController");
+        var request = $http({
+          method: "POST",
+          url: 'http://localhost:3000/conference',
+          data: { conference_name: $routeParams.idConference },
+      
+        });
+        request.success(function (data) {
+            
+        if(data.user_setup.address_city=="hidden"){
+            $("#address_city").hide();
         }
-        $scope.fili = { "username": "filip" };
+        if(data.user_setup.address_country_id=="hidden"){
+            $("#address_country_id").hide();
+        }
+        if(data.user_setup.address_postal=="hidden"){
+            $("#address_postal").hide();
+        }
+        if(data.user_setup.address_street=="hidden"){
+            $("#address_street").hide();
+        }
+        if(data.user_setup.company_address_city=="hidden"){
+            $("#company_address_city").hide();
+        }
+        if(data.user_setup.company_address_country_id=="hidden"){
+            $("#company_address_country_id").hide();
+        }
+        if(data.user_setup.company_address_postal=="hidden"){
+            $("#company_address_postal").hide();
+        }
+        if(data.user_setup.company_address_street=="hidden"){
+            $("#company_address_street").hide();
+        }
+        if(data.user_setup.company_vat_no=="hidden"){
+            $("#company_vat_no").hide();
+        }
+        if(data.user_setup.date_of_birth=="hidden"){
+            $("#date_of_birth").hide();
+        }
+        if(data.user_setup.email=="hidden"){
+            $("#email").hide();
+        }
+        if(data.user_setup.gender=="hidden"){
+            $("#gender").hide();
+        }
+        if(data.user_setup.mobile=="hidden"){
+            $("#mobile").hide();
+        }
+        if(data.user_setup.name=="hidden"){
+            $("#name").hide();
+        } 
+        if(data.user_setup.note=="hidden"){
+            $("#note").hide();
+        }
+        if(data.user_setup.password=="hidden"){
+            $("#password").hide();
+        }
+        if(data.user_setup.phone=="hidden"){
+            $("#phone").hide();
+        }
+        if(data.user_setup.username=="hidden"){
+            $("#username").hide();
+        }
+        if(data.user_setup.surname=="hidden"){
+            $("#surname").hide();
+        }
+        if(data.user_setup.travel_document_number=="hidden"){
+            $("#travel_document_number").hide();
+        }
+        if(data.user_setup.vat_pin=="hidden"){
+            $("#vat_pin").hide();
+        }
+
+        });
+         
         $scope.getNumber = function (num) {
             return new Array(num);
         }

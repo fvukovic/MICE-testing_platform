@@ -2,39 +2,33 @@
 
 var app = angular.module('myApp.menu', ['ngRoute', 'pascalprecht.translate'])
 
-app.config(['$routeProvider', function ($routeProvider, $scope) {
-	$routeProvider.when('/menu', {
-		templateUrl: 'menu/menu.html',
-		controller: 'MenuCtrl'
-	});
-}])
-
-app.controller('MenuCtrl', function ($scope, $http, $translate) {
-		
+ 
+app.controller('MenuCtrl', function ($scope, $http, $translate,$routeParams,$location) { 
 		$scope.user = {              
 			username: "",
 			password: "",
-	} 
+			
+	}  
+	$scope.name="";  
+	alert(window.localStorage.getItem("conference" ));
 	if (window.localStorage.getItem("user") == 1) {
 		$scope.logg = false;
-		$scope.register = "/registration"
-		$scope.username = window.localStorage.getItem("username")
+		$scope.register = "/registration" 
 	} else {
 		$scope.logg = true;
 		$scope.register = "/register"
 	}
 
-
 	var request = $http({
-		method: "GET",
-		url: 'http://localhost:3000/menu',
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-
-	});
+        method: "POST",
+        url: 'http://localhost:3000/menu',
+        data:{conference_name: window.localStorage.getItem("conference" )}, 
+    
+      });
 	request.success(function (data) { 
-		$scope.menu = data;
 		console.log(data);
-
+		$scope.name = window.localStorage.getItem("conference") ;
+		$scope.menu = data; 
 	}); 
 
 	$scope.logout = function () {
@@ -74,8 +68,9 @@ app.controller('MenuCtrl', function ($scope, $http, $translate) {
 	}
 
  
-	$scope.externalLink = function (externalHtml) {
-		window.localStorage.setItem("externalHtml", JSON.stringify(externalHtml));
+	$scope.externalLink = function (externalHtml,url) {  
+		console.log($location.$$absUrl.substring(0,$location.$$absUrl.length-2)      +url);
+		$location.url ($location.$$absUrl.substring(0,$location.$$absUrl.length-2)      +url);
 	}
 	if (window.localStorage.getItem("language") == null) {
 		window.localStorage.setItem("language", "en")
