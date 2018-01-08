@@ -19,171 +19,113 @@
         <form name="myform"> 
 
 
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="address_city">
+          <div  id="address_city" class="form-group">
+            <label for="address_city"> {{ 'address_city' | translate }} :</label>
+            <input id="address_city_input" ng-model="user.address_city_input"  type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="address_country_id">
+          <div id="address_country_id" class="form-group">
+            <label for="address_country_id"> {{ 'address_country_id' | translate }} :</label>
+            <input id="address_country_id_input" ng-model="user.address_country_id" ng-required="{{address_country_id}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="address_postal">
+          <div id="address_postal" class="form-group">
+            <label for="address_postal"> {{ 'address_postal' | translate }} :</label>
+            <input id="address_postal_input" ng-model="user.address_postal" ng-required="{{address_postal}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="address_street">
+          <div id="address_street" class="form-group">
+            <label for="address_street"> {{ 'address_street' | translate }} :</label>
+            <input d="address_street_input" ng-model="user.address_street" ng-required="{{address_street}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="company_address_city">
+          <div  id="company_address_city" class="form-group">
+            <label for="company_address_city"> {{ 'company_address_city' | translate }} :</label>
+            <input id="company_address_city_input" ng-model="user.company_address_city" ng-required="{{company_address_city}}" type="text" class="form-control">
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="company_address_country_id">
+          <div id="company_address_country_id" class="form-group">
+            <label for="company_address_country_id"> {{ 'company_address_country_id' | translate }} :</label>
+            <input id="company_address_country_id_input" ng-model="user.company_address_country_id" ng-required="{{company_address_country_id}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="company_address_postal">
+          <div id="company_address_postal" class="form-group">
+            <label for="company_address_postal"> {{ 'company_address_postal' | translate }} :</label>
+            <input id="company_address_postal_input" ng-model="user.company_address_postal" ng-required="[[company_address_postal]]" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="company_address_street">
+          <div  id="company_address_street" class="form-group">
+            <label for="company_address_street"> {{ 'company_address_street' | translate }} :</label>
+            <input id="company_address_street_input" ng-model="user.company_address_street" ng-required="{{company_address_street}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="company_name">
+          <div id="company_name" class="form-group">
+            <label for="company_name"> {{ 'company_name' | translate }} :</label>
+            <input id="company_name_input"  ng-model="user.company_name" ng-required="{{company_name}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="company_vat_no">
+          <div id="company_vat_no" class="form-group">
+            <label for="company_vat_no"> {{ 'company_vat_no' | translate }} :</label>
+            <input id="company_vat_no_input" ng-model="user.company_vat_no" ng-required="{{company_vat_no}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="date_of_birth">
+          <div id="date_of_birth" class="form-group">
+            <label for="date_of_birth"> {{ 'date_of_birth' | translate }} :</label>
+            <input id="date_of_birth_input"  ng-model="user.date_of_birth" ng-required="{{date_of_birth}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="email">
+          <div   id="email" class="form-group">
+            <label for="email"> {{ 'email' | translate }} :</label>
+            <input  id="email_input" ng-model="user.email" ng-required="{{email}}" type="email" class="form-control">
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="gender">
+          <div id="gender" class="form-group">
+            <label for="gender"> {{ 'gender' | translate }} :</label>
+            <input id="gender_input" ng-model="user.gender" ng-required="{{gender}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="mobile">
+          <div id="mobile" class="form-group">
+            <label for="mobile"> {{ 'mobile' | translate }} :</label>
+            <input id="mobile_input"  ng-model="user.mobile" ng-required="{{mobile}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="note">
+          <div id="note" class="form-group">
+            <label for="note"> {{ 'note' | translate }} :</label>
+            <input id="note_input" ng-model="user.note" ng-required="{{note}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="password">
+          <div id="password" class="form-group">
+            <label for="password"> {{ 'password' | translate }} :</label>
+            <input id="password_input" ng-model="user.password" ng-required="{{password}}" type="password" class="form-control">
           </div>
 
-          <div class="form-group">
-              <label for="name"> {{ 'NAME' | translate }} :</label>
-              <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="password2">
+          <div id="password2" class="form-group">
+              <label for="password2"> {{ 'password2' | translate }} :</label>
+              <input id="password2_input" ng-model="user.password2" ng-required="{{password}}" type="password" class="form-control">
             </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="phone">
+          <div  id="phone" class="form-group">
+            <label for="phone"> {{ 'phone' | translate }} :</label>
+            <input id="phone_input"  ng-model="user.phone" ng-required="{{phone}}" type="text" class="form-control">
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="surname">
+          <div  id="surname" class="form-group">
+            <label for="surname"> {{ 'surname' | translate }} :</label>
+            <input id="surname_input" ng-model="user.surname"  ng-required="{{surname}}" type="text" class="form-control">
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="travel_document_number">
+          <div  id="travel_document_number" class="form-group">
+            <label for="travel_document_number"> {{ 'travel_document_number' | translate }} :</label>
+            <input id="travel_document_number_input" ng-model="user.travel_document_number" ng-required="{{travel_document_number}}" type="text" class="form-control">
           </div>
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="username">
-          </div>
-
-          <div class="form-group">
-            <label for="name"> {{ 'NAME' | translate }} :</label>
-            <input ng-model="user.name" ng-required="true" type="text" class="form-control" id="vat_pin">
+          <div  id="username" class="form-group">
+            <label for="username"> {{ 'username' | translate }} :</label>
+            <input id="username_input" ng-model="user.username" ng-required="{{username}}" type="text" class="form-control">
           </div>
 
-         
-
-
-
-
-
-
-
-
-
-          <div class="form-group">
-            <label for="surname">{{ 'SURNAME' | translate }} :</label>
-            <input ng-model="user.surnname" ng-required="true" type="text" class="form-control" id="surname">
+          <div id="vat_pin" class="form-group">
+            <label for="vat_pin"> {{ 'vat_pin' | translate }} :</label>
+            <input id="vat_pin_input"  ng-model="user.vat_pin" ng-required="{{vat_pin}}" type="text" class="form-control" >
           </div>
-          <div class="form-group">
-            <label for="username">{{ 'USERNAME' | translate }} :</label>
-            <input ng-model="user.username" nng-required="true" type="text" class="form-control" id="username">
-            <span id="error_username" style="color:red;margin-top:20px"></span>
+          <button  ng-click="myform.$valid && register()"
+          class="btn btn-primary btn-lg">{{ 'REGISTER' | translate }} </button>
+
+      </form>
+          
+          
+          <div ng-repeat="key in inputs" id="vat_pin" class="form-group">
+            <label for="{{ key._id }}"> {{ key.label[language] }} :</label>
+            <input ng-model="{{user}}"   type="text" class="form-control" >
+          </div>
+ 
+  
           </div>
 
-          <div class="form-group">
-            <label for="pwd">{{ 'PASSWORD' | translate }} :</label>
+    
 
-            <input ng-model="user.password" ng-required="true" type="password" class="form-control" ng-model="formData.password" id="pwd">
-          </div>
-
-          <div class="form-group">
-            <label for="pwd">{{ 'PASSWORD' | translate }} :</label>
-            <input ng-model="user.confpassword" ng-required="true" type="password" class="form-control" ng-model="formData.confirmPassword"
-              ng-pattern="formData.password" id="pwd">
-            <span style="color:red;margin-top:20px" ng-show="user.password != user.confpassword && user.password!=''">Your passwords must match.</span>
-
-          </div>
-
-          <div class="form-group">
-            <label for="email"> Email :</label>
-            <input ng-model="user.email" ng-required="true" type="email" class="form-control" id="email">
-            <span id="error_email" style="color:red;margin-top:20px"></span>
-          </div>
-          <div class="form-group">
-            <label for="address">{{ 'ADDRESS' | translate }}:</label>
-            <input ng-model="user.address" ng-required="true" type="text" class="form-control" id="address">
-          </div>
-
-
-          <div class="form-group">
-            <label for="companyinfo">{{ 'COM_INFO' | translate }}:</label>
-            <input ng-model="user.companyinfo" ng-required="true" type="text" class="form-control" id="companyinfo">
-          </div>
-          <div class="form-group">
-            <label for="picture">{{ 'PICTURE' | translate }} :</label>
-            <div class="input-group image-preview">
-              <input type="text" class="form-control image-preview-filename" disabled="disabled">
-              <!-- don't give a name === doesn't send on POST/GET -->
-              <span class="input-group-btn">
-                <!-- image-preview-clear button -->
-                <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                  <span class="glyphicon glyphicon-remove"></span>{{ 'CLEAR' | translate }}
-                </button>
-                <!-- image-preview-input -->
-                <div class="btn btn-default image-preview-input">
-                  <span class="glyphicon glyphicon-folder-open"></span>
-                  <span class="image-preview-input-title">{{ 'BROWSE' | translate }} </span>
-                  <input ng-model="user.inputfilepreview" type="file" accept="image/png, image/jpeg, image/gif" name="inputfilepreview" />
-                  <!-- rename it -->
-                </div>
-              </span>
-            </div>
-          </div>
-
-          <button ng-disabled="user.password != user.confpassword || user.username=='' || user.email==''" ng-click="myform.$valid && register()"
-            class="btn btn-primary btn-lg">{{ 'REGISTER' | translate }} </button>
-
-        </form>
+       
       </div>
     </div>
   </div>

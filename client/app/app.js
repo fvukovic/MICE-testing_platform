@@ -55,10 +55,8 @@ app.controller('NextRouteController', function ($scope, $routeParams, $http, $lo
     }
    
   
-
-    alert($routeParams.idConference);
-    window.localStorage.setItem("conference", $routeParams.idConference);
-    console.log(data.menu.length);
+ 
+    window.localStorage.setItem("conference", $routeParams.idConference); 
     for(var x=0;x<data.menu.length;x++){ 
       console.log(data.menu[x].address.substring(1)+ "=="+$routeParams.address);
       if(data.menu[x].address.substring(1)==+$routeParams.address){ 

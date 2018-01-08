@@ -39,20 +39,26 @@ app.listen(config.port, function (err) {
 
 //rute treba odvojit u fajlove!!
 app.post("/menu", function (req, res, next) {
-    var response = []; 
+    var response = {
+        "menu":"",
+        "conference":"",
+    }; 
     db.conference.findOne({"web_address": req.body.conference_name }, function (err, result) {
         if (err) {
             console.log(err);
         } else {  
             if(result==null){
                 res.send({"status":0}); 
+                
                 return;
             }
+            response.conference=result;
             db.conferencemenu.find({"conference_id": result._id}).toArray(function (err, result) {
                 if (err) {
                     console.log(err);
-                } else { 
-                        res.send(result[0]); 
+                } else {  
+                    response.menu=result[0].menu;
+                        res.send(response); 
                 }
             })
         }
@@ -64,13 +70,14 @@ app.post("/menu", function (req, res, next) {
 app.post("/conference", function (req, res, next) {
     var response = []; 
     db.conference.findOne({"web_address": req.body.conference_name }, function (err, result) {
+        console.log(req.body.conference_name);
         if (err) {
             console.log(err);
         } else {  
             res.send(result);
-        }
+            console.log(result);
+        } 
 
-  
 });
 
    
