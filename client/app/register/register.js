@@ -21,27 +21,27 @@ angular.module('myApp.register', ['ngRoute'])
 
         $scope.user = {
             address_city :"",
-            address_country_id  :  "required",
-            address_postal  :  "required",
-            address_street  :    "required",
-            company_address_city  :  "hidden",
-            company_address_country_id  :  "hidden",
-            company_address_postal   :   "hidden",
-            company_address_street  :     "hidden",
-            company_name  :   "hidden",
-            company_vat_no  :  "hidden",
-            date_of_birth  :  "hidden",
-            email  :  "required",
-            gender  :    "hidden",
-            mobile   :  "hidden",
-            name   :   "required",
-            note   :  "hidden",
-            password    :  "required",
-            phone   :   "hidden",
-            surname  :    "required",
-            travel_document_number  :   "hidden",
-            username   :  "required",
-            vat_pin   :   "hidden",
+            address_country_id :  "",
+            address_postal :  "",
+            address_street  :    "",
+            company_address_city  :  "",
+            company_address_country_id  :  "",
+            company_address_postal :   "",
+            company_address_street :     "",
+            company_name :   "",
+            company_vat_no :  "",
+            date_of_birth:  "",
+            email  :  "",
+            gender  :    "",
+            mobile   :  "",
+            name :   "",
+            note  :  "",
+            password    :  "",
+            phone  :   "",
+            surname  :    "",
+            travel_document_number :   "",
+            username  :  "",
+            vat_pin  :   "",
         }
         
         console.log("RputeController");
@@ -60,16 +60,27 @@ angular.module('myApp.register', ['ngRoute'])
         }else{
             if(data.user_setup.address_city=="required"){
                 $scope.address_city = true;
-                $("#address_city_input").prop('required',true);
+                $("#address_city ").prop('required',true);
             }else{
                 $scope.address_city = false;
             }
         }
+
+        if(data.user_setup.company_name=="hidden"){
+            $("#company_name").hide();
+        }else{
+            if(data.user_setup.company_name=="required"){
+                $("#company_name ").prop('required',true);
+            }else{
+                $scope.address_country_id = false;
+            }
+        }
+
         if(data.user_setup.address_country_id=="hidden"){
             $("#address_country_id").hide();
         }else{
             if(data.user_setup.address_country_id=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#address_country_id ").prop('required',true);
             }else{
                 $scope.address_country_id = false;
             }
@@ -78,7 +89,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#address_postal").hide();
         }else{
             if(data.user_setup.address_postal=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#address_postal ").prop('required',true);
             }else{
                 $scope.address_postal = false;
             }
@@ -87,7 +98,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#address_street").hide();
         }else{
             if(data.user_setup.address_street=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#address_street ").prop('required',true);
             }else{
                 $scope.address_street = false;
             }
@@ -96,7 +107,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#company_address_city").hide();
         }else{
             if(data.user_setup.company_address_city=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#company_address_city ").prop('required',true);
             }else{
                 $scope.company_address_city = false;
             }
@@ -106,7 +117,7 @@ angular.module('myApp.register', ['ngRoute'])
         }
         else{
             if(data.user_setup.company_address_country_id=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#company_address_country_id ").prop('required',true);
             }else{
                 $scope.company_address_country_id = false;
             }
@@ -115,7 +126,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#company_address_postal").hide();
         }else{
             if(data.user_setup.company_address_postal=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#company_address_postal ").prop('required',true);
             }else{
                 $scope.company_address_postal = false;
             }
@@ -124,7 +135,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#company_address_street").hide();
         }else{
             if(data.user_setup.company_address_street=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#company_address_street ").prop('required',true);
             }else{
                 $scope.company_address_street = false;
             }
@@ -133,7 +144,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#company_vat_no").hide();
         }else{
             if(data.user_setup.company_vat_no=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#company_vat_no ").prop('required',true);
             }else{
                 $scope.company_vat_no = false;
             }
@@ -142,7 +153,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#date_of_birth").hide();
         }else{
             if(data.user_setup.date_of_birth=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#date_of_birth ").prop('required',true);
             }else{
                 $scope.date_of_birth = false;
             }
@@ -151,7 +162,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#email").hide();
         }else{
             if(data.user_setup.email=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#email ").prop('required',true);
             }else{
                 $scope.email = false;
             }
@@ -160,7 +171,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#gender").hide();
         }else{
             if(data.user_setup.gender=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#gender ").prop('required',true);
             }else{
                 $scope.gender = false;
             }
@@ -169,7 +180,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#mobile").hide();
         }else{
             if(data.user_setup.mobile=="required"){
-                $("#address_city_input").prop('required',true);
+                $("#mobile ").prop('required',true);
             }else{
                 $scope.mobile = false;
             }
@@ -178,7 +189,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#name").hide();
         } else{
             if(data.user_setup.name=="required"){
-                $("#name_input").prop('required',true);
+                $("#name ").prop('required',true);
             }else{
                 $scope.name = false;
             }
@@ -187,7 +198,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#note").hide();
         }else{
             if(data.user_setup.note=="required"){
-                $("#note_input").prop('required',true);
+                $("#note ").prop('required',true);
             }else{
                 $scope.note = false;
             }
@@ -196,7 +207,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#password").hide();
         }else{
             if(data.user_setup.password=="required"){
-                $("#password_input").prop('required',true);
+                $("#password ").prop('required',true);
             }else{
                 $scope.password = false;
             }
@@ -205,7 +216,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#phone").hide();
         }else{
             if(data.user_setup.phone=="required"){
-                $("#phone_input").prop('required',true);
+                $("#phone ").prop('required',true);
             }else{
                 $scope.phone = false;
             }
@@ -214,7 +225,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#username").hide();
         }else{
             if(data.user_setup.username=="required"){
-                $("#username_input").prop('required',true);
+                $("#username ").prop('required',true);
             }else{
                 $scope.username = false;
             }
@@ -223,7 +234,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#surname").hide();
         }else{
             if(data.user_setup.surname=="required"){
-                $("#surname_input").prop('required',true);
+                $("#surname ").prop('required',true);
             }else{
                 $scope.surname = false;
             }
@@ -232,7 +243,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#travel_document_number").hide();
         }else{
             if(data.user_setup.travel_document_number=="required"){
-                $("#travel_document_number_input").prop('required',true);
+                $("#travel_document_number ").prop('required',true);
             }else{
                 $scope.travel_document_number = false;
             }
@@ -241,19 +252,41 @@ angular.module('myApp.register', ['ngRoute'])
             $("#vat_pin").hide();
         }else{
             if(data.user_setup.vat_pin=="required"){
-                $("#vat_pin_input").prop('required',true);
+                $("#vat_pin ").prop('required',true);
             }else{
                 $scope.vat_pin = false;
             }
         }
 
+        // for(var x=0;x<data.user_additional_setup.length;x++){
+        //      alert("");
+        //     if(data.user_additional_setup[x].option=="optional"){
+                
+        //         $("#"+data.user_additional_setup[x]._id).prop('required',true);
+        //     }
+        // }
+
         });
+
+        $scope.testRequirements = function(option){ 
+                if(option =="required"){
+                    return true;
+                }else{
+                    return false;
+                }
+        }
          
         $scope.getNumber = function (num) {
             return new Array(num);
         }
        
         $scope.register = function () { 
+
+
+            $.each($('.additional'),function(){ 
+                $scope.user[$(this).attr("id")] = $(this).val();
+            }); 
+            console.log($scope.user); 
             var request = $http({
                 method: "post",
                 url: 'http://localhost:3000/register',

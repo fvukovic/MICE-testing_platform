@@ -131,12 +131,9 @@ app.get("/products", function (req, res, next) {
     var response = [];
     db.product.find({}).toArray(function (err, result) {
         db.tax.find({}).toArray(function (err2, result2) {
-
-            console.log("OVOO:"+result2.length);
+ 
                 for(var x=0;x<result.length;x++){
-                    for(var y=0;y<result2.length;y++){ 
-                        console.log(result[x].tax  +"    "+result2[y]["_id"]);
-                        console.log(result[x].tax==result2[y]["_id"]);
+                    for(var y=0;y<result2.length;y++){  
                         if(result[x].tax.equals(result2[y]["_id"])){
                              response.push({
                                  "product":result[x],
