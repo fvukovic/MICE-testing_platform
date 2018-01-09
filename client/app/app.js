@@ -23,12 +23,12 @@ var app = angular.module('myApp', [
     $routeProvider.when('/mice/:idConference', {
       templateUrl: 'menu/empty.html',
       controller: 'RouteController'
-    });
+    })
 
-    $routeProvider.when('/mice/:idConference/:address', {
+    .when('/mice/:idConference/:address', {
       templateUrl: 'indeks/indeks.html',
       controller: 'NextRouteController'
-    });
+    }) .otherwise({redirectTo:'/bad_request'});
 
   }]);
 

@@ -40,61 +40,61 @@ app.listen(config.port, function (err) {
 //rute treba odvojit u fajlove!!
 app.post("/menu", function (req, res, next) {
     var response = {
-        "menu":"",
-        "conference":"",
-    }; 
-    db.conference.findOne({"web_address": req.body.conference_name }, function (err, result) {
+        "menu": "",
+        "conference": "",
+    };
+    db.conference.findOne({ "web_address": req.body.conference_name }, function (err, result) {
         if (err) {
             console.log(err);
-        } else {  
-            if(result==null){
-                res.send({"status":0}); 
-                
+        } else {
+            if (result == null) {
+                res.send({ "status": 0 });
+
                 return;
             }
-            response.conference=result;
-            db.conferencemenu.find({"conference_id": result._id}).toArray(function (err, result) {
+            response.conference = result;
+            db.conferencemenu.find({ "conference_id": result._id }).toArray(function (err, result) {
                 if (err) {
                     console.log(err);
-                } else {  
-                    response.menu=result[0].menu;
-                        res.send(response); 
+                } else {
+                    response.menu = result[0].menu;
+                    res.send(response);
                 }
             })
         }
     })
 
-  
+
 });
 
 app.post("/conference", function (req, res, next) {
-    var response = []; 
-    db.conference.findOne({"web_address": req.body.conference_name }, function (err, result) {
+    var response = [];
+    db.conference.findOne({ "web_address": req.body.conference_name }, function (err, result) {
         console.log(req.body.conference_name);
         if (err) {
             console.log(err);
-        } else {  
+        } else {
             res.send(result);
             console.log(result);
-        } 
+        }
 
-});
+    });
 
-   
+
 });
 
 app.post("/register", function (req, res, next) {
 
-    var request = req.body;
+    var request = req.body.reg;
     var succes_msg = {
         username: 1,
         email: 1,
         status: 1,
     };
 
-    db.conference_user.findOne({ "username": req.body.username }, function (err, result) {
+    db.conference_user.findOne({ "username": req.body.reg.username }, function (err, result) {
         if (err) throw err;
-        console.log(req.body.username);
+        console.log("OOOVOOOOOOOOOO:" + JSON.stringify(result));
         if (result == null) {
             console.log("ne postoji");
         } else {
@@ -103,8 +103,8 @@ app.post("/register", function (req, res, next) {
             succes_msg.status = 0;
         }
     });
-
-    db.conference_user.findOne({ "email": req.body.email }, function (err, result) {
+    console.log("ovooooooo: " + req.body.reg.email);
+    db.conference_user.findOne({ "email": req.body.reg.email }, function (err, result) {
         if (err) throw err;
         if (result == null) {
             console.log("ne postoji");
@@ -115,10 +115,17 @@ app.post("/register", function (req, res, next) {
         }
         res.send(succes_msg);
         if (succes_msg.status == 1) {
-            request.password = passwordHash.generate(req.body.password)
+            request.password = passwordHash.generate(req.body.reg.password)
             db.conference_user.insertOne(request, function (err, res) {
                 if (err) throw err;
-                console.log("1 document inserted");
+
+                db.conference_users_rel.insertOne({ "user_id": res.ops[0]._id, "conference_id": req.body.id }, function (err, res2) {
+                    if (err) throw err;
+                    console.log("1 document inserted" + JSON.stringify(res2.ops[0]));
+
+                });
+
+
             });
         }
     });
@@ -126,26 +133,26 @@ app.post("/register", function (req, res, next) {
 
 
 });
- 
+
 app.get("/products", function (req, res, next) {
     var response = [];
     db.product.find({}).toArray(function (err, result) {
         db.tax.find({}).toArray(function (err2, result2) {
- 
-                for(var x=0;x<result.length;x++){
-                    for(var y=0;y<result2.length;y++){  
-                        if(result[x].tax.equals(result2[y]["_id"])){
-                             response.push({
-                                 "product":result[x],
-                                 "tax":result2[y].name,
-                             });
-                        }    
+
+            for (var x = 0; x < result.length; x++) {
+                for (var y = 0; y < result2.length; y++) {
+                    if (result[x].tax.equals(result2[y]["_id"])) {
+                        response.push({
+                            "product": result[x],
+                            "tax": result2[y].name,
+                        });
                     }
-                    
                 }
-                res.send(response);   
+
+            }
+            res.send(response);
         });
-       
+
         if (err) {
             console.log(err);
         } else {
@@ -166,22 +173,36 @@ app.post("/login", function (req, res, next) {
         status: 0,
     };
 
-    db.conference_user.findOne({ "username": req.body.username }, function (err, result) {
-        if (err) throw err;
-        console.log(req.body.username);
-        if (result == null) {
-            console.log("ne postoji");
-            succes_msg.username = 0;
-            res.send(succes_msg);
-        } else {
-            if (passwordHash.verify(req.body.password, result.password)) {
-                succes_msg.status = 1;
-                res.send(succes_msg);
-            } else {
-                succes_msg.password = 0;
-                res.send(succes_msg);
+    db.conference_users_rel.find({ "conference_id": req.body.id }).toArray(function (err, result) {
+ 
+        db.conference_user.find({}).toArray(function (err, result2) {
+            for (var x = 0; x < result.length; x++) {
+                for (var y = 0; y < result2.length; y++) {
+                    if (result[x].user_id.equals(result2[y]._id)) {
+                        if (err) throw err;  
+                            if (req.body.username.toString().trim() === (result2[y].username)) { 
+                                if (passwordHash.verify(req.body.password, result2[y].password)) {
+                                    succes_msg.status = 1; 
+                                    succes_msg.username = 1;
+                                    succes_msg.password = 1;
+                                    res.send(succes_msg);
+                                    return;
+                                } else {
+                                    succes_msg.password = 0;
+
+                                }
+                            } else {
+                                succes_msg.username = 0;
+
+                            }
+
+                        
+                    }
+                }
             }
-        }
+            res.send(succes_msg);
+        });
+
     });
 
 });

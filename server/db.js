@@ -12,6 +12,7 @@ module.exports.init = function (callback) {
     module.exports.conference_user = client.collection("conference_user"); 
     module.exports.tax = client.collection("tax");   
     module.exports.conference = client.collection("conference");  
+    module.exports.conference_users_rel = client.collection("conference_users_rel");  
     callback(error);
   });
 };

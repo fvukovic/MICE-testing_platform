@@ -3,7 +3,7 @@
 angular.module('myApp.registration', ['ngRoute'])
 
   .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/registration', {
+    $routeProvider.when('/mice/:conferenceId/registration', {
       templateUrl: 'registration/registration.html',
       controller: 'RegistrationCtrl'
     });
@@ -12,9 +12,9 @@ angular.module('myApp.registration', ['ngRoute'])
  
   .controller('RegistrationCtrl', function ($scope, $http, $rootScope,$translate, $location) {
     $scope.language = window.localStorage.getItem("language");
-    $scope.cost=0;
-    if(window.localStorage.getItem("user")==0){
-      $location.path('/register');
+    $scope.cost=0; 
+    if(window.localStorage.getItem("user")!=1 ){
+      $location.path('/mice/'+window.localStorage.getItem("conference") +'/register');
   }
     var request = $http({
       method: "GET",

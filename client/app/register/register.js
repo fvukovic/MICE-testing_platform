@@ -16,10 +16,13 @@ angular.module('myApp.register', ['ngRoute'])
     .controller('RegisterCtrl', function ($scope, $http,$location,$routeParams,$translate, $rootScope) {
         $scope.language = $translate.use();
         if(window.localStorage.getItem("user")==1){
-            $location.path('/registration')
+            $location.path('/mice/+'+window.localStorage.getItem("conference") +'registration')
         } 
-
-        $scope.user = {
+        $scope.user ={
+            reg:"",
+            id:"",
+        }
+        $scope.user.reg = {
             address_city :"",
             address_country_id :  "",
             address_postal :  "",
@@ -42,6 +45,7 @@ angular.module('myApp.register', ['ngRoute'])
             travel_document_number :   "",
             username  :  "",
             vat_pin  :   "",
+            user_additional_setup:[],
         }
         
         console.log("RputeController");
@@ -284,8 +288,10 @@ angular.module('myApp.register', ['ngRoute'])
 
 
             $.each($('.additional'),function(){ 
-                $scope.user[$(this).attr("id")] = $(this).val();
+                var x=$(this).attr('id');
+                $scope.user.reg.user_additional_setup.push({ [x]: $(this).val()});
             }); 
+            $scope.user.id=   window.localStorage.getItem("id_conference");
             console.log($scope.user); 
             var request = $http({
                 method: "post",
