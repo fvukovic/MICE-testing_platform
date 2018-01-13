@@ -10,7 +10,7 @@ app.controller('MenuCtrl', function ($scope, $http, $translate, $routeParams, $l
 
 	}
 	$scope.user.username = window.localStorage.getItem("username"); 
-	
+
 	if (window.localStorage.getItem("user") == 1) {
 		$scope.logg = false;
 		$scope.register = "/registration"
@@ -28,9 +28,10 @@ app.controller('MenuCtrl', function ($scope, $http, $translate, $routeParams, $l
 	request.success(function (data) {
 		console.log(data);
 		window.localStorage.setItem("id_conference", data.conference._id);
-		$scope.name = window.localStorage.getItem("conference");
+		$scope.name = window.localStorage.getItem("conference");  
 		$scope.menu = data;
 		$scope.name_conf = data.conference.name[$translate.use()];
+	
 	});
 
 	$scope.logout = function () {

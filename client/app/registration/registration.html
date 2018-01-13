@@ -1,7 +1,17 @@
+<div ng-include="'menu/menu.html'">
 
+</div>
+<style>
+  .form-control {
+    width: 250px;
+  }
 
-  <div ng-include="'menu/menu.html'"></div>
-
+  .inputs {
+    border: 2px solid red;
+    border-radius: 25px;
+    padding: 20px
+  }
+</style>
 <div class="entry" ng-init="trustedHtml()">
   <div class="container">
     <div class="row">
@@ -11,7 +21,7 @@
             <a href="#!/home">Home</a>
           </li>
           <li>
-            <a href="#!/registration"> {{ 'PRODUCTST' | translate }}  </a>
+            <a href="#!/registration"> {{ 'PRODUCTST' | translate }} </a>
           </li>
         </ul>
       </div>
@@ -27,32 +37,170 @@
                     <thead>
                       <tr>
                         <th> {{ 'NAME' | translate }}
-                           
-                        </th> 
+
+                        </th>
+                        <th> {{ 'INPUTS' | translate }}
+
+                        </th>
                         <th>{{ 'PRICE' | translate }}
-                           
+
                         </th>
                         <th>{{ 'LEFT' | translate }}
-                           
+
                         </th>
                         <th>{{ 'QUANTI' | translate }}
-                           
+
                         </th>
-                        <th>{{ 'ADOTO' | translate }}
-                       
+                        <th style="width: 100px">{{ 'ADOTO' | translate }}
+
                         </th>
 
                         <th>{{ 'TAX' | translate }}
-                       
+
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr ng-repeat="key in products" class="cart_table_item">
-                        <td  class="product-name">
-                          <a class="toggle-title"> 
-                            {{key['product']  ["name"][language]}}   
+                        <td class="product-name" style="width:400px !important;">
+                          <a class="toggle-title">
+                            {{key.product.name[language]}}
+
+                            <div ng-if="key.conference.user_data == true &&( key.conference.grouped_data == false || !key.conference.grouped_data  ) "
+                              id="add{{key['product']['_id']}}">
+                              <div ng-repeat="key2 in key.conference.user_data_additional_setup" id="add{{key['product']['_id']}}">
+                                <label>{{key2.name[language]}}</label>
+                                <input ng-if="key2.option=='required'" required/>
+                                <input ng-if="key2.option=='optional'" />
+                              </div>
+                              <div ng-repeat="key2 in key.conference.user_data_additional_setup" id="add{{key['product']['_id']}}">
+                                <label>{{key2.name[language]}}</label>
+                                <input ng-if="key2.option=='required'" required/>
+                                <input ng-if="key2.option=='optional'" />
+                              </div>
+
+                            </div>
+
                           </a>
+                        </td>
+                        <td id="main{{key['product']['_id']}}">
+                          <div id="html{{key['product']['_id']}}">
+                          <div ng-if="key.conference.grouped_data==true"   class="inputs">
+                            <div ng-if="key.conference.user_data_setup.address_city!='hidden'" class="address_city{{key['product']['_id']}}" class="form-group">
+                              <label for="address_city{{key['product']['_id']}}"> {{ 'address_city' | translate }} :</label>
+                              <input class="address_city{{key['product']['_id']}} form-control " ng-model="user.reg.address_city" type="text" >
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.address_country_id!='hidden'" class="form-group">
+                              <label for="address_country_id{{key['product']['_id']}}"> {{ 'address_country_id' | translate }} :</label>
+                              <input class="address_country_id{{key['product']['_id']}} " ng-model="user.reg.address_country_id" type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.address_postal!='hidden'" id="address_postal" class="form-group">
+                              <label for="address_postal{{key['product']['_id']}}"> {{ 'address_postal' | translate }} :</label>
+                              <input class="address_postal{{key['product']['_id']}}" ng-model="user.reg.address_postal " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.address_street!='hidden'" id="address_street{{key['product']['_id']}}" class="form-group">
+                              <label for="address_street{{key['product']['_id']}}"> {{ 'address_street' | translate }} :</label>
+                              <input class="address_street{{key['product']['_id']}}" ng-model="user.reg.address_street " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.company_address_city!='hidden'" id="company_address_city{{key['product']['_id']}}"
+                              class="form-group">
+                              <label for="company_address_city{{key['product']['_id']}}"> {{ 'company_address_city' | translate }} :</label>
+                              <input class="company_address_city{{key['product']['_id']}}" ng-model="user.reg.company_address_city " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.company_address_country_id!='hidden'" id="company_address_country_id{{key['product']['_id']}}"
+                              class="form-group">
+                              <label for="company_address_country_id{{key['product']['_id']}}"> {{ 'company_address_country_id' | translate }} :</label>
+                              <input class="company_address_country_id{{key['product']['_id']}}" ng-model="user.reg.company_address_country_id " type="text"
+                                class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.company_address_postal!='hidden'" id="company_address_postal{{key['product']['_id']}}"
+                              class="form-group">
+                              <label for="company_address_postal{{key['product']['_id']}}"> {{ 'company_address_postal' | translate }} :</label>
+                              <input class="company_address_postal{{key['product']['_id']}}" ng-model="user.reg.company_address_postal " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.company_address_street!='hidden'" id="company_address_street{{key['product']['_id']}}"
+                              class="form-group">
+                              <label for="company_address_street{{key['product']['_id']}}"> {{ 'company_address_street' | translate }} :</label>
+                              <input class="company_address_street{{key['product']['_id']}}" ng-model="user.reg.company_address_street " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.company_name!='hidden'" id="company_name{{key['product']['_id']}}" class="form-group">
+                              <label for="company_name{{key['product']['_id']}}"> {{ 'company_name' | translate }} :</label>
+                              <input class="company_name {{key['product']['_id']}}" ng-model="user.reg.company_name " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.company_vat_no!='hidden'" id="company_vat_no{{key['product']['_id']}}" class="form-group">
+                              <label for="company_vat_no{{key['product']['_id']}}"> {{ 'company_vat_no' | translate }} :</label>
+                              <input class="company_vat_no {{key['product']['_id']}}" ng-model="user.reg.company_vat_no " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.date_of_birth!='hidden'" id="date_of_birth" class="form-group">
+                              <label for="date_of_birth"> {{ 'date_of_birth' | translate }} :</label>
+                              <input class="date_of_birth " ng-model="user.date_of_birth " type="date" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.email!='hidden'" id="email" class="form-group">
+                              <label for="email"> {{ 'email' | translate }} :</label>
+                              <input class="email " ng-model="user.reg.email " type="email" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.gender!='hidden'" id="gender" class="form-group">
+                              <label for="gender"> {{ 'gender' | translate }} :</label>
+                              <select id="gender " class="form-control" ng-model="user.gender ">
+                                <option value="M">{{ 'gender_male' | translate }}</option>
+                                <option value="F">{{ 'gender_female' | translate }}</option>
+                              </select>
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.mobile!='hidden'" id="mobile" class="form-group">
+                              <label for="mobile"> {{ 'mobile' | translate }} :</label>
+                              <input class="mobile " ng-model="user.reg.mobile " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.note!='hidden'" id="note" class="form-group">
+                              <label for="note"> {{ 'note' | translate }} :</label>
+                              <input class="note " ng-model="user.reg.note " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.password!='hidden'" id="password" class="form-group">
+                              <label for="password"> {{ 'password' | translate }} :</label>
+                              <input class="password " ng-model="user.reg.password " type="password" class="form-control">
+                            </div>
+
+
+                            <div ng-if="key.conference.user_data_setup.phone!='hidden'" id="phone" class="form-group">
+                              <label for="phone"> {{ 'phone' | translate }} :</label>
+                              <input class="phone " ng-model="user.reg.phone " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.surname!='hidden'" id="surname" class="form-group">
+                              <label for="surname"> {{ 'surname' | translate }} :</label>
+                              <input class="surname " ng-model="user.reg.surname " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.travel_document_number!='hidden'" id="travel_document_number" class="form-group">
+                              <label for="travel_document_number"> {{ 'travel_document_number' | translate }} :</label>
+                              <input class="travel_document_number " ng-model="user.reg.travel_document_number " type="text" class="form-control">
+                            </div>
+                            <div ng-if="key.conference.user_data_setup.username!='hidden'" id="username" class="form-group">
+                              <label for="username"> {{ 'username' | translate }} :</label>
+                              <input class="username " ng-model="user.reg.username " type="text" class="form-control">
+                            </div>
+
+                            <div ng-if="key.conference.user_data_setup.vat_pin!='hidden'" id="vat_pin" class="form-group">
+                              <label for="vat_pin"> {{ 'vat_pin' | translate }} :</label>
+                              <input class="vat_pin " ng-model="user.reg.vat_pin " type="text" class="form-control">
+                            </div>
+                            <div ng-repeat="key2 in key.conference.user_data_additional_setup" id="vat_pin" class="form-group">
+                              <label for="vat_pin"> {{key2.name[language]}} </label>
+                              <input class="{{key2.label_id}} " ng-model="user.reg.vat_pin " type="text" class="form-control">
+                            </div>
+
+                           
+                          </div>
+                        </div>
+                          <br/><br/>
+
+
+
+
+
+
+
+
+
+                          <div id="add{{key['product']['_id']}}">
+                          </div>
                           <div class="toggle-details">
                             <table class="table table-border-none">
                               <thead>
@@ -62,50 +210,31 @@
                                   <th>{{ 'EMAIL' | translate }} Email</th>
                                 </tr>
                               </thead>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <input class="form-control" type="text" name="name1" id="name1{{key['product']['_id']}}" />
-                                  </td>
-                                  <td>
-                                    <input class="form-control" type="text" name="suername1" id="suername1{{key['product']['_id']}}" />
-                                  </td>
-                                  <td>
-                                    <input class="form-control" type="text" name="email1" id="email1{{key['product']['_id']}}" />
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <input class="form-control" type="text" name="name" id="name{{key['product']['_id']}}" />
-                                  </td>
-                                  <td>
-                                    <input class="form-control" type="text" name="surname" id="surname{{key['product']['_id']}}" />
-                                  </td>
-                                  <td>
-                                    <input class="form-control" type="text" name="email" id="email{{key['product']['_id']}}" />
-                                  </td>
-                                </tr>
-                              </tbody>
                             </table>
                           </div>
                         </td>
                         <td id="price{{key['product']['_id']}}">
-                          30 €
+                          {{key.conference.price}} €
                         </td>
                         <td>
                           40
                         </td>
                         <td>
-                         {{key["tax"]}}
+                          {{key["tax"]}}
                         </td>
-                        <td>
-                          <input class="form-control" id="quantity{{key['product']['_id']}}" type="number" min="0" ng-click="addToCard()"  />
+                        <td style="width: 100px">
+                          <input class="form-control" id="quantity{{key['product']['_id']}}" type="number" min="0" onkeydown="return false" ng-click="changeValue(key['product']['_id'],key.conference.grouped_data)"
+                          />
+
+
+
+
                         </td>
                         <td>
                           <input class="form-control" type="checkbox" id="checkbox{{key['product']['_id']}}" ng-click="addToCard()">
                         </td>
                       </tr>
-                 
+
                     </tbody>
                   </table>
                 </form>
@@ -145,7 +274,7 @@
                     </tr>
                     <tr class="total">
                       <th>
-                        <strong>  {{ 'SUBTOTAL' | translate }}</strong>
+                        <strong> {{ 'SUBTOTAL' | translate }}</strong>
                       </th>
                       <td>
                         <strong>
@@ -165,9 +294,9 @@
 
     <div class="checkbox">
       <label>
-        <input type="checkbox">  {{ 'SENDEM' | translate }}</label>
+        <input type="checkbox"> {{ 'SENDEM' | translate }}</label>
     </div>
-    <button ng-click="register()" class="btn btn-primary btn-lg">  {{ 'ORDER' | translate }}</button>
+    <button ng-click="register()" class="btn btn-primary btn-lg"> {{ 'ORDER' | translate }}</button>
   </div>
 </div>
 </div>
@@ -178,3 +307,6 @@
     $(this).next(".toggle-details").toggle("fast");
   });
 </script>
+
+
+

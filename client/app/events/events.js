@@ -3,7 +3,7 @@
 angular.module('myApp.events', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/events', {
+  $routeProvider.when('/mice/:conferenceId/events', {
     templateUrl: 'events/events.html',
     controller: 'EventsCtrl'
   });

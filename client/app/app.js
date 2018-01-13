@@ -28,7 +28,8 @@ var app = angular.module('myApp', [
     .when('/mice/:idConference/:address', {
       templateUrl: 'indeks/indeks.html',
       controller: 'NextRouteController'
-    }) .otherwise({redirectTo:'/bad_request'});
+    }) 
+    .otherwise({redirectTo:'/bad_request'});
 
   }]);
 
@@ -61,6 +62,9 @@ app.controller('NextRouteController', function ($scope, $routeParams, $http, $lo
       console.log(data.menu[x].address.substring(1)+ "=="+$routeParams.address);
       if(data.menu[x].address.substring(1)==+$routeParams.address){ 
          $scope.html= $sce.trustAsHtml( data.menu[x].html["en"])  ;
+         if(data.menu[x].menu.type=="main"){
+           $scope.main = true;
+         }
          pageExist=true; 
       }
       for(var y=0;y<data.menu[x].nodes.length;y++){
@@ -70,7 +74,11 @@ app.controller('NextRouteController', function ($scope, $routeParams, $http, $lo
       }
     }
     if($routeParams.address=="_" && pageExist==false){
+      if(data.menu[0].type=="main"){
+        $scope.main = true;
+      }
       $scope.html=data.menu[0].html;
+      
       $scope.html = $sce.trustAsHtml( data.menu[0].html[$translate.use()]);  ;
       console.log("pocetna");
     }

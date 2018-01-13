@@ -16,7 +16,7 @@ angular.module('myApp.register', ['ngRoute'])
     .controller('RegisterCtrl', function ($scope, $http,$location,$routeParams,$translate, $rootScope) {
         $scope.language = $translate.use();
         if(window.localStorage.getItem("user")==1){
-            $location.path('/mice/+'+window.localStorage.getItem("conference") +'registration')
+            $location.path('/mice/'+window.localStorage.getItem("conference") +'/registration')
         } 
         $scope.user ={
             reg:"",
@@ -48,7 +48,6 @@ angular.module('myApp.register', ['ngRoute'])
             user_additional_setup:[],
         }
         
-        console.log("RputeController");
         var request = $http({
           method: "POST",
           url: 'http://localhost:3000/conference',
@@ -63,8 +62,8 @@ angular.module('myApp.register', ['ngRoute'])
             $("#address_city").hide();
         }else{
             if(data.user_setup.address_city=="required"){
-                $scope.address_city = true;
-                $("#address_city ").prop('required',true);
+                $scope.address_city = true; 
+
             }else{
                 $scope.address_city = false;
             }
@@ -74,7 +73,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#company_name").hide();
         }else{
             if(data.user_setup.company_name=="required"){
-                $("#company_name ").prop('required',true);
+                $scope.address_country_id = true;
             }else{
                 $scope.address_country_id = false;
             }
@@ -84,7 +83,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#address_country_id").hide();
         }else{
             if(data.user_setup.address_country_id=="required"){
-                $("#address_country_id ").prop('required',true);
+                $scope.address_country_id = true;
             }else{
                 $scope.address_country_id = false;
             }
@@ -92,8 +91,8 @@ angular.module('myApp.register', ['ngRoute'])
         if(data.user_setup.address_postal=="hidden"){
             $("#address_postal").hide();
         }else{
-            if(data.user_setup.address_postal=="required"){
-                $("#address_postal ").prop('required',true);
+            if(data.user_setup.address_postal=="required"){ 
+                $scope.address_postal = true;
             }else{
                 $scope.address_postal = false;
             }
@@ -102,7 +101,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#address_street").hide();
         }else{
             if(data.user_setup.address_street=="required"){
-                $("#address_street ").prop('required',true);
+                $scope.address_street = true;
             }else{
                 $scope.address_street = false;
             }
@@ -111,7 +110,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#company_address_city").hide();
         }else{
             if(data.user_setup.company_address_city=="required"){
-                $("#company_address_city ").prop('required',true);
+                $scope.company_address_city = true;
             }else{
                 $scope.company_address_city = false;
             }
@@ -121,7 +120,7 @@ angular.module('myApp.register', ['ngRoute'])
         }
         else{
             if(data.user_setup.company_address_country_id=="required"){
-                $("#company_address_country_id ").prop('required',true);
+                $scope.company_address_country_id = true;
             }else{
                 $scope.company_address_country_id = false;
             }
@@ -130,7 +129,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#company_address_postal").hide();
         }else{
             if(data.user_setup.company_address_postal=="required"){
-                $("#company_address_postal ").prop('required',true);
+                $scope.company_address_postal = true;
             }else{
                 $scope.company_address_postal = false;
             }
@@ -139,7 +138,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#company_address_street").hide();
         }else{
             if(data.user_setup.company_address_street=="required"){
-                $("#company_address_street ").prop('required',true);
+                $scope.company_address_street = true;
             }else{
                 $scope.company_address_street = false;
             }
@@ -148,7 +147,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#company_vat_no").hide();
         }else{
             if(data.user_setup.company_vat_no=="required"){
-                $("#company_vat_no ").prop('required',true);
+                $scope.company_vat_no = true;
             }else{
                 $scope.company_vat_no = false;
             }
@@ -157,7 +156,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#date_of_birth").hide();
         }else{
             if(data.user_setup.date_of_birth=="required"){
-                $("#date_of_birth ").prop('required',true);
+                $scope.date_of_birth = true;
             }else{
                 $scope.date_of_birth = false;
             }
@@ -166,7 +165,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#email").hide();
         }else{
             if(data.user_setup.email=="required"){
-                $("#email ").prop('required',true);
+                $scope.email = true;
             }else{
                 $scope.email = false;
             }
@@ -175,7 +174,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#gender").hide();
         }else{
             if(data.user_setup.gender=="required"){
-                $("#gender ").prop('required',true);
+                $scope.gender = true;
             }else{
                 $scope.gender = false;
             }
@@ -184,7 +183,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#mobile").hide();
         }else{
             if(data.user_setup.mobile=="required"){
-                $("#mobile ").prop('required',true);
+                $scope.mobile = true;
             }else{
                 $scope.mobile = false;
             }
@@ -193,7 +192,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#name").hide();
         } else{
             if(data.user_setup.name=="required"){
-                $("#name ").prop('required',true);
+                $scope.name = true;
             }else{
                 $scope.name = false;
             }
@@ -202,7 +201,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#note").hide();
         }else{
             if(data.user_setup.note=="required"){
-                $("#note ").prop('required',true);
+                $scope.note = true;
             }else{
                 $scope.note = false;
             }
@@ -211,7 +210,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#password").hide();
         }else{
             if(data.user_setup.password=="required"){
-                $("#password ").prop('required',true);
+                $scope.password = true;
             }else{
                 $scope.password = false;
             }
@@ -220,7 +219,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#phone").hide();
         }else{
             if(data.user_setup.phone=="required"){
-                $("#phone ").prop('required',true);
+                $scope.phone = true;
             }else{
                 $scope.phone = false;
             }
@@ -229,7 +228,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#username").hide();
         }else{
             if(data.user_setup.username=="required"){
-                $("#username ").prop('required',true);
+                $scope.username = true;
             }else{
                 $scope.username = false;
             }
@@ -238,7 +237,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#surname").hide();
         }else{
             if(data.user_setup.surname=="required"){
-                $("#surname ").prop('required',true);
+                $scope.surname = true;
             }else{
                 $scope.surname = false;
             }
@@ -247,7 +246,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#travel_document_number").hide();
         }else{
             if(data.user_setup.travel_document_number=="required"){
-                $("#travel_document_number ").prop('required',true);
+                $scope.travel_document_number = true;
             }else{
                 $scope.travel_document_number = false;
             }
@@ -256,7 +255,7 @@ angular.module('myApp.register', ['ngRoute'])
             $("#vat_pin").hide();
         }else{
             if(data.user_setup.vat_pin=="required"){
-                $("#vat_pin ").prop('required',true);
+                $scope.vat_pin = true;
             }else{
                 $scope.vat_pin = false;
             }

@@ -13,6 +13,8 @@ module.exports.init = function (callback) {
     module.exports.tax = client.collection("tax");   
     module.exports.conference = client.collection("conference");  
     module.exports.conference_users_rel = client.collection("conference_users_rel");  
+    module.exports.conferenceline = client.collection("conferenceline");  
+    module.exports.supplierproduct = client.collection("supplierproduct"); 
     callback(error);
   });
 };
