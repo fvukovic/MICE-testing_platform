@@ -1,4 +1,8 @@
+
+<script src="login.js"></script>
 <header id="header" data-ng-controller="MenuCtrl" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 140, "stickySetTop": "-140px"}'>
+   
+   
     <div class="header-body">
         <div class="header-top"> 
             <div class="container">
@@ -36,7 +40,7 @@
                                         <h1></h1>
                                     </li>
                                     <li class="dropdown">
-                                        <a class="toggle-login login-btn">
+                                        <a ng-click="login2()" class="toggle-login login-btn">
                                             <b>{{'LOGIN' | translate }}</b>
                                             <span class="caret"></span>
                                         </a>
@@ -85,11 +89,11 @@
                                 <li class="hidden-xs">
                                 </li>
                                 <li class="dropdown">
-                                    <a class="toggle-login login-btn">
+                                    <a ng-click="login2()" class="toggle-login login-btn">
                                         <b style="color:#4081e8;font-size:18px;">{{user.username}}</b>
                                         <span class="caret"></span>
                                     </a>
-                                    <ul id="login-dp" class="toggle-login-details dropdown-menu">
+                                    <ul id="login-dp" class="toggle-login-details  dropdown-menu">
                                         <li>
                                             <div class="row">
 
@@ -123,7 +127,7 @@
                 <div class="header-column">
                     <div class="header-logo">
                         <a href="#!/home">
-                            <img alt="" width="110" height="60" src="img\logo.png">
+                            <img alt="" width="110" height="60" src="{{logo}}">
                         </a>
                     </div>
                 </div>
@@ -138,37 +142,19 @@
                 <nav>
                     <ul class="nav nav-pills" id="mainNav">
                         <li ng-repeat="MenuFirstLevel in menu.menu" class="dropdown">
-                            <a href="#/mice/{{name}}{{MenuFirstLevel['address']}}" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}"  >
+                            <a href="{{url}}{{name}}/{{MenuFirstLevel['address']}}" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}"  >
                                
                                 {{MenuFirstLevel["label"][language]}}
-                            </a>
-                            <ul ng-repeat="MenuSecondLevel in MenuFirstLevel.nodes" class="dropdown-menu">
-                                <li>
-                                    <a href="#/mice/{{name}}{{MenuSecondLevel['address']}}" > {{MenuSecondLevel["label"][language]}}</a>
+                            </a> 
+                            <ul ng-if="MenuFirstLevel.nodes.length!=0"  class="dropdown-menu">
+                                <li ng-repeat="MenuSecondLevel in MenuFirstLevel.nodes">
+                                    <a href="{{url}}{{name}}/{{MenuSecondLevel['address']}}" > {{MenuSecondLevel["label"][language]}}</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="#/mice/{{name}}{{register}}"> {{'REG_INFO' | translate }}(static)</a>
-                        </li>
-                        <li>
-                            <a href="#/mice/{{name}}/abstracts"> {{'ABSTRACT' | translate }}(static)</a>
-                        </li>
-                        <li>
-                            <a href="#/mice/{{name}}/events"> {{'LECTURES' | translate }}(static)</a>
-                        </li>
-                    </ul>
-
+                        </li> 
+                    </ul> 
                 </nav>
             </div>
         </div>
     </div>
 </header>
-<script>
-    $(".toggle-login").click(function () {
-        $(this).next(".toggle-login-details").toggle("fast");
-    });
-    $(".toggle-language").click(function () {
-        $(this).next(".toggle-language-details").toggle("fast");
-    });
-</script>

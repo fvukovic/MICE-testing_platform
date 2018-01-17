@@ -5,7 +5,7 @@
 angular.module('myApp.register', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/mice/:idConference/register', {
+        $routeProvider.when('/:idConference/register', {
             templateUrl: 'register/register.html',
             controller: 'RegisterCtrl'
         });
@@ -13,10 +13,10 @@ angular.module('myApp.register', ['ngRoute'])
 
     
 
-    .controller('RegisterCtrl', function ($scope, $http,$location,$routeParams,$translate, $rootScope) {
+    .controller('RegisterCtrl', function (api,$scope, $http,$location,$routeParams,$translate, $rootScope) {
         $scope.language = $translate.use();
         if(window.localStorage.getItem("user")==1){
-            $location.path('/mice/'+window.localStorage.getItem("conference") +'/registration')
+            $location.path('/'+window.localStorage.getItem("conference") +'/registration')
         } 
         $scope.user ={
             reg:"",
@@ -50,7 +50,7 @@ angular.module('myApp.register', ['ngRoute'])
         
         var request = $http({
           method: "POST",
-          url: 'http://localhost:3000/conference',
+          url: api+'/conference',
           data: { conference_name: $routeParams.idConference },
       
         });
@@ -291,22 +291,21 @@ angular.module('myApp.register', ['ngRoute'])
                 $scope.user.reg.user_additional_setup.push({ [x]: $(this).val()});
             }); 
             $scope.user.id=   window.localStorage.getItem("id_conference");
-            console.log($scope.user); 
+         
             var request = $http({
                 method: "post",
-                url: 'http://localhost:3000/register',
+                url: 'http://148.251.42.157:3007/register',
                 data: $scope.user
 
  
             });
-            request.success(function (data) {
-                console.log(data);
-                if (data.status == 1) { 
-                    window.localStorage.setItem("username",$scope.user.username);
+            request.success(function (data) {  
+                if (data.status == 1) {  
+                    window.localStorage.setItem("username",$scope.user.reg.username );
                     window.localStorage.setItem("user","1");
                     window.location.reload();
-                    $location.path('/registration')
-
+                    alert("REG");
+                   $location.url('/' + $routeParams.idConference +"/register");
                 } else {
                     if(data.username==0){
                         $("#error_username").text("Username already exist!")  

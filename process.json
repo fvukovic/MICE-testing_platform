@@ -1,0 +1,22 @@
+{
+	"apps": [
+	{
+		"name": "mice-api",
+		"cwd": "/home/radnik/mice_frontend/MICE-testing_platform/server",
+		"script": "server.js",
+		"watch": true
+	},
+	{
+		"name": "angular",
+		"cwd": "/home/radnik/mice_frontend/MICE-testing_platform/client/app",
+		"args": "-p 8080 -d false",
+		"script": "/home/radnik/.nvm/versions/node/v8.4.0/bin/http-server"
+	},
+	{
+		"name": "api",
+		"cwd": "/home/radnik/mice_frontend/MICE-testing_platform/client/app",
+		"script": "app.js",
+		"watch": true
+	}
+	]
+}

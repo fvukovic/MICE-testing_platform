@@ -4,6 +4,7 @@
 var app = angular.module('myApp', [
   'ngSanitize',
   'ngRoute',
+  'ngMap',
   'myApp.home',
   'myApp.register',
   'myApp.registration',
@@ -17,58 +18,96 @@ var app = angular.module('myApp', [
   'myApp.version',
   'pascalprecht.translate',
   'ngSanitize'
-]).
-  config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+]); 
+app.value('api', 'http://148.251.42.157:3007');
+app.value('url', '/mice/#/');
 
-    $routeProvider.when('/mice/:idConference', {
-      templateUrl: 'menu/empty.html',
-      controller: 'RouteController'
-    })
+ 
+    app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+   
 
-    .when('/mice/:idConference/:address', {
-      templateUrl: 'indeks/indeks.html',
-      controller: 'NextRouteController'
-    }) 
-    .otherwise({redirectTo:'/bad_request'});
+        $routeProvider
+            .when('/:idConference', {
+                templateUrl: 'menu/empty.html',
+                controller: 'RouteController'
+            })
+            .when('/hello', {
+                templateUrl: 'hello.html',
+                controller: 'HelloController'
+            })
 
-  }]);
+            .when('/:idConference/:address', {
+                templateUrl: 'indeks/indeks.html',
+                controller: 'NextRouteController'
+            })
+             
 
-app.controller('NextRouteController', function ($scope, $routeParams, $http, $location,$translate,$sce) { 
+    }]);
+app.controller('HelloController', function($scope) {
+    console.log('Hello controller says: "Hello :)"');
+});
+
+app.controller('NextRouteController', function (api,NgMap,$scope,$rootScope, $routeParams, $http, $location,$translate,$sce) { 
   $scope.html="";
-  var pageExist=false;
-  console.log("NextRouterController");
+  var pageExist=false;  
+  $rootScope.$on('$translateChangeSuccess', function (event, current, previous) {
+window.location.reload();
+  });
+
+ 
+  function getLatitudeLongitude( address) {
+    // If adress is not supplied, use default value 'Ferrol, Galicia, Spain'
+    address = address || 'Ferrol, Galicia, Spain';
+    // Initialize the Geocoder
+    var geocoder = new google.maps.Geocoder();
+    if (geocoder) {
+        geocoder.geocode({
+            'address': address
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                console.log(results[0].geometry.location.lat());
+                $scope.lat = results[0].geometry.location.lat();
+                $scope.long = results[0].geometry.location.lng();
+            }
+        });
+    }
+} 
+
+
+
   var request = $http({
     method: "POST",
-    url: 'http://localhost:3000/menu',
+    url: this.api+'/menu',
     data: { conference_name: $routeParams.idConference },
 
   });
   request.success(function (data) {
     if(data.status==0){
       return;
-    }
+    } 
+    getLatitudeLongitude(data.conference.location.address.street + ", "+data.conference.location.address.city)
 
+ 
 
     $scope.trustedHtml = function () { 
       
          return   $sce.trustAsHtml($scope.html); 
        
-    }
-   
+    } 
   
  
     window.localStorage.setItem("conference", $routeParams.idConference); 
     for(var x=0;x<data.menu.length;x++){ 
-      console.log(data.menu[x].address.substring(1)+ "=="+$routeParams.address);
-      if(data.menu[x].address.substring(1)==+$routeParams.address){ 
-         $scope.html= $sce.trustAsHtml( data.menu[x].html["en"])  ;
-         if(data.menu[x].menu.type=="main"){
+      console.log(data.menu[x].address+ "=="+$routeParams.address);
+      if(data.menu[x].address==$routeParams.address){  
+         $scope.html= $sce.trustAsHtml( data.menu[x].html[$translate.use()])  ;
+         if(data.menu[x].type=="main"){
            $scope.main = true;
          }
          pageExist=true; 
       }
       for(var y=0;y<data.menu[x].nodes.length;y++){
-         if(data.menu[x].nodes[y].address.substring(1)==$routeParams.address){ 
+         if(data.menu[x].nodes[y].address==$routeParams.address){ 
            $scope.html=   $sce.trustAsHtml( data.menu[x].nodes[y].html[$translate.use()]);  ;
          }
       }
@@ -85,14 +124,21 @@ app.controller('NextRouteController', function ($scope, $routeParams, $http, $lo
 
   });
 
+  NgMap.getMap().then(function(map) {
+    console.log(map.getCenter());
+    console.log('markers', map.markers);
+    console.log('shapes', map.shapes);
+  });
+
 });
 
-app.controller('RouteController', function ($scope, $routeParams, $http, $location) {
+app.controller('RouteController', function (api,$scope, $routeParams, $http, $location) {
   
+ 
   console.log("RputeController");
   var request = $http({
     method: "POST",
-    url: 'http://localhost:3000/menu',
+    url: api+'/menu',
     data: { conference_name: $routeParams.idConference },
 
   });
@@ -100,12 +146,12 @@ app.controller('RouteController', function ($scope, $routeParams, $http, $locati
     console.log(data);
     if(data.status==0){
       return;
-    }
+    } 
     window.localStorage.setItem("conference", $routeParams.idConference) 
     if(data.menu[0].address=="/"){
-      $location.path('/mice/' + $routeParams.idConference + data.menu[0].address+"_");
-    }else{
-      $location.path('/mice/' + $routeParams.idConference + data.menu[0].address);
+      $location.url('/' + $routeParams.idConference +"/"+ data.menu[0].address+"_");
+    }else{  
+      $location.url('/' + $routeParams.idConference +"/"+ data.menu[0].address);
     }
     
   });

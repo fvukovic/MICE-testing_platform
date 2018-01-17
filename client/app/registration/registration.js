@@ -3,19 +3,19 @@
 angular.module('myApp.registration', ['ngRoute'])
 
   .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/mice/:conferenceId/registration', {
+    $routeProvider.when('/:conferenceId/registration', {
       templateUrl: 'registration/registration.html',
       controller: 'RegistrationCtrl'
     });
   }])
 
 
-  .controller('RegistrationCtrl', function ($scope, $http, $rootScope, $translate, $location) {
+  .controller('RegistrationCtrl', function (api,$scope, $http, $rootScope, $translate, $location) {
     $scope.language = window.localStorage.getItem("language");
     $scope.cost = 0;
     $scope.model = [];
     if (window.localStorage.getItem("user") != 1) {
-      $location.path('/mice/' + window.localStorage.getItem("conference") + '/register');
+      $location.path('/' + window.localStorage.getItem("conference") + '/register');
     }
     $scope.number = 5;
     $scope.getNumber = function (num) {
@@ -24,7 +24,7 @@ angular.module('myApp.registration', ['ngRoute'])
 
     var request = $http({
       method: "POST",
-      url: 'http://localhost:3000/products',
+      url: api+'/products',
       data: { id_conference: window.localStorage.getItem("id_conference") }
 
     });
@@ -80,7 +80,7 @@ angular.module('myApp.registration', ['ngRoute'])
 
       var request = $http({
         method: "post",
-        url: 'http://localhost:3000/register',
+        url: api+'/register',
         data: $scope.user
 
       });

@@ -9,7 +9,7 @@ angular.module('myApp.my-profile', ['ngRoute'])
         });
     }])
 
-    .controller('MyProfileCtrl', function ($scope, $http,$routeParams,$translate) {
+    .controller('MyProfileCtrl', function (api,$scope, $http,$routeParams,$translate) {
         $scope.user ={
             reg:"",
             id:"",
@@ -43,7 +43,7 @@ angular.module('myApp.my-profile', ['ngRoute'])
            
         var request = $http({
             method: "POST",
-            url: 'http://localhost:3000/profile', 
+            url: api+'/profile', 
             data:{"username":window.localStorage.getItem("username"),conference_name: $routeParams.idConference}
             
           });
@@ -273,7 +273,7 @@ angular.module('myApp.my-profile', ['ngRoute'])
         /* Get row from register where id = sesion user id --> show result in inputs */
         var request = $http({
             method: "POST",
-            url: 'http://localhost:3000/profile', 
+            url: api+'/profile', 
             data:{"username":window.localStorage.getItem("username"),"conference_name": $routeParams.idConference}
         
           });
@@ -288,7 +288,7 @@ angular.module('myApp.my-profile', ['ngRoute'])
         $scope.save = function () {
             var request = $http({
                 method: "post",
-                url: 'http://localhost:3000/register',
+                url: api+'/register',
                 data: $scope.user
 
             });

@@ -1,0 +1,1 @@
+{ "rewrites": [ {"source":"mice/**","destination":"/home/radnik/mice_frontend/MICE-testing_platform/client/app/index.html"} ] }
