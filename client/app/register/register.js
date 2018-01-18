@@ -39,6 +39,7 @@ angular.module('myApp.register', ['ngRoute'])
             mobile   :  "",
             name :   "",
             note  :  "",
+            name :"",
             password    :  "",
             phone  :   "",
             surname  :    "",
@@ -56,6 +57,8 @@ angular.module('myApp.register', ['ngRoute'])
         });
         request.success(function (data) {
             console.log(data); 
+            $scope.countries = data.country;
+            $scope.language = data.language;
             $scope.inputs = data.user_additional_setup;
 
         if(data.user_setup.address_city=="hidden"){
@@ -179,6 +182,17 @@ angular.module('myApp.register', ['ngRoute'])
                 $scope.gender = false;
             }
         }
+
+        if(data.user_setup.language_id=="hidden"){
+            $("#mobile").hide();
+        }else{
+            if(data.user_setup.language_id=="required"){
+                $scope.language_id = true;
+            }else{
+                $scope.language_id = false;
+            }
+        }
+
         if(data.user_setup.mobile=="hidden"){
             $("#mobile").hide();
         }else{
@@ -204,6 +218,15 @@ angular.module('myApp.register', ['ngRoute'])
                 $scope.note = true;
             }else{
                 $scope.note = false;
+            }
+        }
+        if(data.user_setup.name=="hidden"){
+            $("#name").hide();
+        }else{
+            if(data.user_setup.name=="required"){
+                $scope.name = true;
+            }else{
+                $scope.name = false;
             }
         }
         if(data.user_setup.password=="hidden"){
@@ -285,7 +308,7 @@ angular.module('myApp.register', ['ngRoute'])
        
         $scope.register = function () { 
 
-
+            console.log($scope.user);
             $.each($('.additional'),function(){ 
                 var x=$(this).attr('id');
                 $scope.user.reg.user_additional_setup.push({ [x]: $(this).val()});

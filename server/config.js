@@ -1,5 +1,5 @@
 module.exports = {
-    "database": "agency",
+    "database": "mice",
     "port": 3007, 
     "mongo_port":27017,
     "mongo_ip_address":"127.0.0.1",

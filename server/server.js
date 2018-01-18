@@ -46,13 +46,14 @@ app.post("/menu", function (req, res, next) {
         "menu": "",
         "conference": "",
     };
+    console.log( req.body.conference_name );
     db.conference.findOne({ "web_address": req.body.conference_name }, function (err, result) {
         if (err) {
             console.log(err);
         } else {
+            console.log(result);
             if (result == null) {
                 res.send({ "status": 0 });
-
                 return;
             }
             response.conference = result;
@@ -73,16 +74,18 @@ app.post("/menu", function (req, res, next) {
 app.post("/conference", function (req, res, next) {
     var response = [];
     db.conference.findOne({ "web_address": req.body.conference_name }, function (err, result) {
-        console.log(req.body.conference_name);
+        console.log("OVOOOO:"+result);
         if (err) {
             console.log(err);
         } else {
-            db.country.find({}).toArray(function (err, result) {
-                response.menu = result[0].menu;
-                response["country"]=result;
-                res.send(response);
-            })
-            res.send(result);
+            db.country.find({}).toArray(function (err, result2) { 
+                db.language.find({}).toArray(function (err, result3) {
+                    response = result;
+                    response["language"]=result3;
+                    response["country"]=result2;
+                    res.send(response);
+                }) 
+            }) 
             console.log(result);
         }
 

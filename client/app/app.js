@@ -20,8 +20,8 @@ var app = angular.module('myApp', [
   'pascalprecht.translate',
   'ngSanitize'
 ]); 
-app.value('api', 'http://148.251.42.157:3007');
-app.value('url', '/mice/#/');
+app.value('api', 'http://localhost:3007');
+app.value('url', '/app/#/');
 
  
     app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
@@ -274,6 +274,7 @@ app.config(['$translateProvider', function ($translateProvider) {
 
 
     //registration
+    "name": "Name",
     "address_city": "Town",
     "address_country_id": "Country ID",
     "address_postal": "Postal number",
@@ -321,6 +322,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     "LATEST": "Latest Tweets",
     "WAIT": "Please wait...",
     "FOLLOW": " Follow Us",
+    "LANGUAGE":"Language"
 
 
 
@@ -494,6 +496,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     "LATEST": "Najnoviji Tweets",
     "WAIT": "Molim Vas pričekajte...",
     "FOLLOW": " Pratite nas",
+    "LANGUAGE":"Jezik"
 
 
 

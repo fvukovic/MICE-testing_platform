@@ -16,6 +16,7 @@ module.exports.init = function (callback) {
     module.exports.conferenceline = client.collection("conferenceline");  
     module.exports.supplierproduct = client.collection("supplierproduct"); 
     module.exports.country = client.collection("country"); 
+    module.exports.language = client.collection("language"); 
     callback(error);
   });
 };
