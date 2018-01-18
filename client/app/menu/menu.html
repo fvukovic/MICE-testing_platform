@@ -1,10 +1,8 @@
-
- 
 <header id="header" data-ng-controller="MenuCtrl" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 140, "stickySetTop": "-140px"}'>
-   
-   
+
+
     <div class="header-body">
-        <div class="header-top"> 
+        <div class="header-top">
             <div class="container">
                 <nav class="header-nav-top">
                     <ul class="nav nav-pills">
@@ -103,7 +101,7 @@
                                                         <b>{{'LOGOUT' | translate }}</b>
                                                     </a>
                                                 </div>
-                                                <div  class="bottom text-center">
+                                                <div class="bottom text-center">
 
                                                     <a style="color:#4081e8" href="#/mice/{{name}}/my-profile">
                                                         <b>{{'MYPROFILE' | translate }}</b>
@@ -122,18 +120,20 @@
         <div class="header-container container">
             <div class="header-row">
                 <div class="header-column">
-                    <h1 class="page-title"> {{name_conf}}</h1>
-                </div>
-                <div class="header-column">
-                    <div class="header-logo">
+                    <div class="logo-img">
                         <a href="#!/home">
-                            <img alt=""   style=" display: block; text-indent: -9999px;height:90px;width:150px;  image-rendering: -moz-crisp-edges;         /* Firefox */
-                            image-rendering:   -o-crisp-edges;         /* Opera */
-                            image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
-                            image-rendering: crisp-edges;
-                            -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */" src="{{logo}}">
+                            <img alt="" class="img-responsive" style=" display: block; text-indent: -9999px; image-rendering: -moz-crisp-edges;         /* Firefox */
+                                    image-rendering:   -o-crisp-edges;         /* Opera */
+                                    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+                                    image-rendering: crisp-edges;
+                                    -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */" src="{{logo}}">
                         </a>
                     </div>
+                </div>
+            </div>
+            <div class="header-row">
+                <div class="header-column">
+                    <h1 class="page-title text-center"> {{name_conf}}</h1>
                 </div>
             </div>
         </div>
@@ -146,17 +146,18 @@
                 <nav>
                     <ul class="nav nav-pills" id="mainNav">
                         <li ng-repeat="MenuFirstLevel in menu.menu" class="dropdown">
-                            <a href="{{url}}{{name}}/{{MenuFirstLevel['address']}}" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}"  >
-                               
+                            <a href="{{url}}{{name}}/{{MenuFirstLevel['address']}}" ng-class="{'dropdown-toggle': MenuFirstLevel.nodes.length != 0}">
+
                                 {{MenuFirstLevel["label"][language]}}
-                            </a> 
-                            <ul ng-if="MenuFirstLevel.nodes.length!=0"  class="dropdown-menu">
+                                <i ng-if="MenuFirstLevel.nodes.length!=0" class="fa fa-caret-down"></i>
+                            </a>
+                            <ul ng-if="MenuFirstLevel.nodes.length!=0" class="dropdown-menu">
                                 <li ng-repeat="MenuSecondLevel in MenuFirstLevel.nodes">
-                                    <a href="{{url}}{{name}}/{{MenuSecondLevel['address']}}" > {{MenuSecondLevel["label"][language]}}</a>
+                                    <a href="{{url}}{{name}}/{{MenuSecondLevel['address']}}"> {{MenuSecondLevel["label"][language]}}</a>
                                 </li>
                             </ul>
-                        </li> 
-                    </ul> 
+                        </li>
+                    </ul>
                 </nav>
             </div>
         </div>

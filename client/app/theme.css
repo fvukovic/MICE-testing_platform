@@ -1,8 +1,3 @@
-/*
-Name: 			theme.css
-Written by: 	Okler Themes - (http://www.okler.net)
-Version: 		4.5.0
-*/
 html {
 	direction: ltr;
 	overflow-x: hidden;
@@ -483,7 +478,7 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 		content: "\f0d7";
 		font-size: 10px;
 		position: absolute;
-		top: 14px;
+		top: 17px;
 		right: 11px;
 	}
 
