@@ -21,7 +21,10 @@ var app = angular.module('myApp', [
   'ngSanitize'
 ]); 
 app.value('api', 'http://148.251.42.157:3007');
+/*
 app.value('url', '/mice/#/');
+*/
+app.value('url', '/app/#/');
 
  
     app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {

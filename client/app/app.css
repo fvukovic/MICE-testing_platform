@@ -34,6 +34,10 @@ body {
 #header .header-logo {
   float: right !important;
 }
+.logo-img {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
 .header-nav-top {
   float: right !important;
 }
