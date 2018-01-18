@@ -1,5 +1,5 @@
 
-<script src="login.js"></script>
+ 
 <header id="header" data-ng-controller="MenuCtrl" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 140, "stickySetTop": "-140px"}'>
    
    
@@ -127,7 +127,11 @@
                 <div class="header-column">
                     <div class="header-logo">
                         <a href="#!/home">
-                            <img alt="" width="110" height="60" src="{{logo}}">
+                            <img alt=""   style=" display: block; text-indent: -9999px;height:90px;width:150px;  image-rendering: -moz-crisp-edges;         /* Firefox */
+                            image-rendering:   -o-crisp-edges;         /* Opera */
+                            image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+                            image-rendering: crisp-edges;
+                            -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */" src="{{logo}}">
                         </a>
                     </div>
                 </div>

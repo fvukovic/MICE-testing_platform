@@ -77,11 +77,6 @@ app.post("/conference", function (req, res, next) {
         if (err) {
             console.log(err);
         } else {
-            db.country.find({}).toArray(function (err, result) {
-                response.menu = result[0].menu;
-                response["country"]=result;
-                res.send(response);
-            })
             res.send(result);
             console.log(result);
         }

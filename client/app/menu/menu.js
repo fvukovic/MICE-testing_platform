@@ -29,7 +29,7 @@ app.controller('MenuCtrl', function (url,api,$scope, $http, $translate, $routePa
 	});
 	request.success(function (data) {
 		console.log(data);
-		$scope.logo = "uploads/"+data.conference.logo.name;
+		$scope.logo = "http://148.251.42.157/uploads/"+data.conference.logo.name;
 		window.localStorage.setItem("id_conference", data.conference._id);
 		$scope.name = window.localStorage.getItem("conference");  
 		$scope.menu = data;

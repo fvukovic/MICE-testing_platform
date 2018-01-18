@@ -13,6 +13,7 @@ var app = angular.module('myApp', [
   'myApp.abstracts',
   'myApp.conference-info',
   'myApp.menu',
+  'myApp.view1',
   'myApp.view2',
   'myApp.indeks',
   'myApp.version',
@@ -73,11 +74,10 @@ window.location.reload();
     }
 } 
 
-
-
+ 
   var request = $http({
     method: "POST",
-    url: this.api+'/menu',
+    url: api+'/menu',
     data: { conference_name: $routeParams.idConference },
 
   });
@@ -85,6 +85,7 @@ window.location.reload();
     if(data.status==0){
       return;
     } 
+    $scope.address = data.conference.location.address.street + ", "+data.conference.location.address.city;
     getLatitudeLongitude(data.conference.location.address.street + ", "+data.conference.location.address.city)
 
  
@@ -101,14 +102,17 @@ window.location.reload();
       console.log(data.menu[x].address+ "=="+$routeParams.address);
       if(data.menu[x].address==$routeParams.address){  
          $scope.html= $sce.trustAsHtml( data.menu[x].html[$translate.use()])  ;
+         $scope.footer=   $sce.trustAsHtml( data.conference.footer[$translate.use()]);  
          if(data.menu[x].type=="main"){
            $scope.main = true;
          }
          pageExist=true; 
       }
       for(var y=0;y<data.menu[x].nodes.length;y++){
-         if(data.menu[x].nodes[y].address==$routeParams.address){ 
-           $scope.html=   $sce.trustAsHtml( data.menu[x].nodes[y].html[$translate.use()]);  ;
+        console.log(data.menu[x].nodes[y].address==$routeParams.address);
+         if(data.menu[x].nodes[y].address==$routeParams.address){  
+           $scope.html=   $sce.trustAsHtml( data.menu[x].nodes[y].html[$translate.use()]);  
+           $scope.footer=   $sce.trustAsHtml( data.conference.footer[$translate.use()]);  
          }
       }
     }
@@ -116,9 +120,9 @@ window.location.reload();
       if(data.menu[0].type=="main"){
         $scope.main = true;
       }
-      $scope.html=data.menu[0].html;
-      
+      $scope.html=data.menu[0].html; 
       $scope.html = $sce.trustAsHtml( data.menu[0].html[$translate.use()]);  ;
+      $scope.footer=   $sce.trustAsHtml( data.conference.footer[$translate.use()]);  
       console.log("pocetna");
     }
 

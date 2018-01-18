@@ -15,7 +15,6 @@ module.exports.init = function (callback) {
     module.exports.conference_users_rel = client.collection("conference_users_rel");  
     module.exports.conferenceline = client.collection("conferenceline");  
     module.exports.supplierproduct = client.collection("supplierproduct"); 
-    module.exports.country = client.collection("country"); 
     callback(error);
   });
 };

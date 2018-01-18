@@ -1,14 +1,23 @@
 'use strict';
 
 angular.module('myApp.view1', ['ngRoute'])
+ 
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
+.controller('View1Ctrl', function($scope,$http,api,$translate,$sce,$rootScope) {  
+  var request = $http({
+		method: "POST",
+		url: api+'/conference',
+		data: { conference_name: window.localStorage.getItem("conference") },
+
+	});
+	request.success(function (data) {
+    console.log(data);
+    $scope.footer=   $sce.trustAsHtml( data.footer[$translate.use()]);  
+
   });
-}])
 
-.controller('View1Ctrl', [function() {
-
-}]);
+  $rootScope.$on('$translateChangeSuccess', function (event, current, previous) {
+    window.location.reload();
+      });
+    
+});

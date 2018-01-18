@@ -303,8 +303,7 @@ angular.module('myApp.register', ['ngRoute'])
                 if (data.status == 1) {  
                     window.localStorage.setItem("username",$scope.user.reg.username );
                     window.localStorage.setItem("user","1");
-                    window.location.reload();
-                    alert("REG");
+                    window.location.reload(); 
                    $location.url('/' + $routeParams.idConference +"/register");
                 } else {
                     if(data.username==0){
